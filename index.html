@@ -8,547 +8,270 @@
   <meta property="og:title" content="Lyf — Live Fully">
   <meta property="og:description" content="Health is how you live, not just how you look.">
   <title>Lyf — Live Fully</title>
+
+  <!-- Zoho Apptics Analytics -->
+  <script type="text/javascript" id="zohoapptics">var d=document,s=d.createElement("script");s.type="text/javascript";s.id="zohoappticsscript";s.defer=!0;s.src="https://apptics.zoho.in/sdk/web/v1/60070142391/315000000002032/init?aaID=315000000003007";var t=d.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t);window.appticsReady=function(s){var e=window.apptics__asyncalls=window.apptics__asyncalls||[];window.appticsReadyStatus?(s&&e.push(s),e.forEach(s=>s&&s()),window.apptics__asyncalls=null):s&&e.push(s)};</script>
+
   <style>
-    *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
     :root{
-      --bg:#f0faf4;--surface:#fff;--surface2:#f5fdf8;--border:#d1ead9;--border2:#a8d5b5;
-      --text:#0f2d1a;--text2:#2d6644;--muted:#6b9e80;
-      --accent:#16a34a;--accent2:#15803d;--accentlt:#dcfce7;
-      --lime:#65a30d;--limelt:#ecfccb;--teal:#0d9488;--teallt:#ccfbf1;
-      --amber:#d97706;--amberlt:#fef3c7;--coral:#dc2626;--corallt:#fee2e2;
-      --purple:#7c3aed;--purplelt:#ede9fe;--sky:#0284c7;--skylt:#e0f2fe;
+      --bg:#f4fbf6;--surface:#ffffff;--surface2:#edf7f1;--border:#cde8d6;--border2:#9dcfb0;
+      --text:#0d2818;--muted:#5a8a6e;--accent:#16a34a;--accentlt:#dcfce7;--accentdk:#15803d;
       --font:-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,sans-serif;
     }
-    .dark{
-      --bg:#071a0f;--surface:#0f2d1e;--surface2:#153d28;--border:rgba(74,222,128,0.1);--border2:rgba(74,222,128,0.2);
-      --text:#e8f5ee;--text2:#a7d9b8;--muted:#6b9e80;
-      --accent:#4ade80;--accent2:#22c55e;--accentlt:rgba(74,222,128,0.1);
-      --lime:#a3e635;--limelt:rgba(163,230,53,0.1);--teal:#2dd4bf;--teallt:rgba(45,212,191,0.1);
-      --amber:#fbbf24;--amberlt:rgba(251,191,36,0.1);--coral:#f87171;--corallt:rgba(248,113,113,0.1);
-      --purple:#a78bfa;--purplelt:rgba(167,139,250,0.1);--sky:#38bdf8;--skylt:rgba(56,189,248,0.1);
-    }
-    html,body{background:var(--bg);min-height:100vh;transition:background .3s}
-    .app{width:100%;min-height:100vh;background:var(--bg);font-family:var(--font);color:var(--text);display:flex;flex-direction:column;transition:all .3s}
-    .topnav{height:58px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 28px;position:sticky;top:0;z-index:100;flex-shrink:0;transition:all .3s}
-    .logo{font-size:22px;font-weight:800;letter-spacing:-0.5px;color:var(--text);margin-right:32px;cursor:pointer;user-select:none}
-    .logo span{color:var(--accent)}
-    .nav-items{display:flex;gap:2px;flex:1}
-    .ni{padding:6px 12px;border-radius:8px;font-size:13px;font-weight:500;color:var(--muted);cursor:pointer;transition:all .15s;white-space:nowrap}
-    .ni:hover{color:var(--text);background:var(--accentlt)}
-    .ni.on{color:var(--accent);background:var(--accentlt);font-weight:600}
-    .nav-right{display:flex;align-items:center;gap:10px;margin-left:auto}
-    .nav-score{background:var(--accentlt);color:var(--accent);border:1px solid var(--border2);border-radius:20px;padding:5px 14px;font-size:13px;font-weight:700}
-    .theme-btn{width:34px;height:34px;border-radius:8px;background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;transition:all .2s}
-    .main{flex:1;display:flex;flex-direction:column}
-    .screen{display:none;flex-direction:column;animation:fadeUp .25s ease}
-    .screen.on{display:flex}
-    @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+    *{margin:0;padding:0;box-sizing:border-box}
+    html,body{background:var(--bg);font-family:var(--font);color:var(--text)}
+    .page{background:var(--bg);min-height:100vh}
 
-    /* INTRO */
-    .intro-wrap{min-height:calc(100vh - 58px);display:flex;flex-direction:column;background:var(--bg)}
-    .intro-hero{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:64px 32px 48px;text-align:center;border-bottom:1px solid var(--border)}
-    .intro-logo{font-size:52px;font-weight:900;letter-spacing:-2px;color:var(--text);margin-bottom:8px}
-    .intro-logo span{color:var(--accent)}
-    .intro-tagline{font-size:18px;color:var(--muted);margin-bottom:36px;max-width:480px;line-height:1.6}
-    .intro-cta{background:var(--accent);color:#fff;border:none;border-radius:14px;padding:15px 40px;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--font);transition:opacity .2s;margin-bottom:12px}
-    .intro-cta:hover{opacity:.88}
-    .intro-note{font-size:12px;color:var(--muted)}
-    .intro-body{padding:48px 80px;display:grid;grid-template-columns:1fr 1fr;gap:48px;max-width:1100px;margin:0 auto;width:100%}
-    .intro-why{grid-column:1/-1}
-    .intro-why-title{font-size:24px;font-weight:800;letter-spacing:-.5px;color:var(--text);margin-bottom:8px}
-    .intro-why-sub{font-size:15px;color:var(--muted);line-height:1.7;max-width:640px}
-    .intro-col-title{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
-    .intro-pills{display:flex;flex-direction:column;gap:10px}
-    .intro-pill{display:flex;align-items:flex-start;gap:12px;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 16px;transition:border-color .2s}
-    .intro-pill:hover{border-color:var(--border2)}
-    .ip-icon{font-size:18px;width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-    .ip-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:2px}
-    .ip-sub{font-size:12px;color:var(--muted);line-height:1.5}
-    .intro-quote{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px}
-    .iq-text{font-size:17px;font-style:italic;color:var(--text);line-height:1.75;margin-bottom:16px}
-    .iq-attr{font-size:12px;color:var(--muted);font-weight:600}
-    .intro-founder{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:24px;display:flex;align-items:flex-start;gap:16px}
-    .if-avatar{width:52px;height:52px;border-radius:50%;background:var(--accentlt);border:2px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
-    .if-name{font-size:15px;font-weight:800;color:var(--text);margin-bottom:2px}
-    .if-role{font-size:12px;color:var(--muted);margin-bottom:8px}
-    .if-note{font-size:13px;color:var(--text2);line-height:1.6}
-    .intro-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
-    .is-stat{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px;text-align:center}
-    .is-val{font-size:26px;font-weight:900;color:var(--accent);letter-spacing:-.5px}
-    .is-lbl{font-size:11px;color:var(--muted);margin-top:2px;font-weight:500}
+    /* NAV */
+    .nav{height:56px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 32px;justify-content:space-between;position:sticky;top:0;z-index:100}
+    .nav-logo{font-size:20px;font-weight:800;letter-spacing:-0.5px;color:var(--text);user-select:none}
+    .nav-logo span{color:var(--accent)}
+    .nav-right{display:flex;align-items:center;gap:10px}
+    .nav-link{font-size:13px;font-weight:500;color:var(--muted);cursor:pointer;padding:6px 10px;border-radius:8px;transition:all .15s}
+    .nav-link:hover{color:var(--text);background:var(--accentlt)}
+    .nav-cta{font-size:13px;font-weight:700;color:var(--accentdk);background:var(--accentlt);border:1px solid var(--border2);padding:7px 16px;border-radius:8px;cursor:pointer;transition:all .15s}
+    .nav-cta:hover{background:#bbf7d0}
 
-    /* ONBOARDING */
-    .ob-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 24px;min-height:calc(100vh - 58px);background:var(--bg)}
-    .ob-card{background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:48px;width:100%;max-width:460px}
-    .ob-logo{font-size:32px;font-weight:900;letter-spacing:-1px;margin-bottom:6px;color:var(--text)}
-    .ob-logo span{color:var(--accent)}
-    .ob-tagline{font-size:13px;color:var(--muted);margin-bottom:36px}
-    .ob-prog{display:flex;gap:6px;margin-bottom:36px}
-    .ob-pd{height:3px;border-radius:2px;background:var(--border);flex:1;transition:background .3s}
-    .ob-pd.on{background:var(--accent)}
-    .ob-step{display:none}
-    .ob-step.on{display:block}
-    .ob-ey{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--accent);text-transform:uppercase;margin-bottom:10px}
-    .ob-h{font-size:26px;font-weight:800;letter-spacing:-.5px;line-height:1.2;margin-bottom:8px;color:var(--text)}
-    .ob-sub{font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:26px}
-    .ob-inp{width:100%;background:var(--surface2);border:1.5px solid var(--border);border-radius:12px;padding:13px 16px;font-size:15px;color:var(--text);outline:none;font-family:var(--font);margin-bottom:12px;transition:all .2s}
-    .ob-inp:focus{border-color:var(--accent);background:var(--surface)}
-    .ob-inp::placeholder{color:var(--muted)}
-    .ob-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
-    .ob-pill{background:var(--surface2);border:1.5px solid var(--border);border-radius:12px;padding:13px;text-align:center;cursor:pointer;font-size:14px;font-weight:600;color:var(--muted);transition:all .2s}
-    .ob-pill:hover{border-color:var(--border2)}
-    .ob-pill.on{border-color:var(--accent);background:var(--accentlt);color:var(--accent)}
-    .ob-btn{width:100%;background:var(--accent);color:#fff;border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:700;cursor:pointer;margin-top:8px;font-family:var(--font);transition:opacity .2s}
-    .ob-btn:hover{opacity:.88}
-    .ob-loc{background:var(--surface2);border:1.5px solid var(--border);border-radius:14px;padding:16px;margin-bottom:12px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:all .2s}
-    .ob-loc:hover{border-color:var(--accent);background:var(--accentlt)}
-    .ob-loc-ic{width:40px;height:40px;border-radius:10px;background:var(--accentlt);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+    /* HERO */
+    .hero{padding:80px 32px 64px;text-align:center;border-bottom:1px solid var(--border);background:var(--surface)}
+    .hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--accentlt);border:1px solid var(--border2);border-radius:20px;padding:5px 14px;font-size:12px;font-weight:700;color:var(--accentdk);margin-bottom:28px;letter-spacing:.02em}
+    .hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+    .hero-title{font-size:52px;font-weight:900;letter-spacing:-2px;line-height:1.05;color:var(--text);margin-bottom:12px;max-width:640px;margin-left:auto;margin-right:auto}
+    .hero-title span{color:var(--accent)}
+    .hero-sub{font-size:18px;color:var(--muted);line-height:1.65;max-width:500px;margin:0 auto 40px;font-weight:400}
+    .hero-actions{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:20px;flex-wrap:wrap}
+    .btn-primary{background:var(--accent);color:#fff;border:none;border-radius:12px;padding:14px 32px;font-size:15px;font-weight:700;cursor:pointer;font-family:var(--font);transition:background .2s}
+    .btn-primary:hover{background:var(--accentdk)}
+    .btn-secondary{background:var(--surface);color:var(--text);border:1.5px solid var(--border);border-radius:12px;padding:13px 24px;font-size:15px;font-weight:600;cursor:pointer;font-family:var(--font);transition:all .2s}
+    .btn-secondary:hover{border-color:var(--border2);background:var(--surface2)}
+    .hero-note{font-size:12px;color:var(--muted)}
+    .hero-note span{color:var(--accent);font-weight:600}
 
-    /* LAYOUT */
-    .dl{display:grid;grid-template-columns:260px 1fr;min-height:calc(100vh - 58px)}
-    .sb{background:var(--surface);border-right:1px solid var(--border);padding:20px 14px;display:flex;flex-direction:column;gap:2px;position:sticky;top:58px;height:calc(100vh - 58px);overflow-y:auto;transition:all .3s}
-    .sb-sec{font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;padding:4px 10px;margin:10px 0 2px}
-    .sbi{display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:10px;cursor:pointer;transition:all .15s;font-size:13px;font-weight:500;color:var(--muted)}
-    .sbi:hover{background:var(--accentlt);color:var(--text)}
-    .sbi.on{background:var(--accentlt);color:var(--accent);font-weight:600}
-    .sb-ic{font-size:15px;width:20px;text-align:center}
-    .sb-bot{margin-top:auto;background:var(--surface2);border-radius:14px;padding:14px;border:1px solid var(--border)}
-    .sb-score-lbl{font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;margin-bottom:6px}
-    .sb-score-num{font-size:32px;font-weight:900;color:var(--accent);letter-spacing:-1px}
-    .sb-score-sub{font-size:11px;color:var(--muted);margin-top:2px;margin-bottom:10px}
-    .sb-brow{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--muted);margin-bottom:4px}
-    .sb-bbg{flex:1;height:4px;background:var(--border);border-radius:2px}
-    .sb-bfill{height:4px;border-radius:2px}
-    .ct{padding:28px 32px;overflow-y:auto;background:var(--bg);transition:background .3s}
-    .pt{font-size:28px;font-weight:800;letter-spacing:-.5px;color:var(--text);margin-bottom:4px}
-    .ps{font-size:14px;color:var(--muted);margin-bottom:22px}
-    .card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px;transition:all .3s}
-    .clbl{font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;margin-bottom:10px}
-    .g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-bottom:18px}
-    .g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:18px}
-    .g4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:18px}
-    .stat{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px;transition:all .3s}
-    .sv{font-size:24px;font-weight:800;letter-spacing:-.5px;margin-bottom:2px}
-    .sl{font-size:12px;color:var(--muted);font-weight:500}
-    .bdg{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;margin-top:5px}
-    .banner{border-radius:12px;padding:13px 16px;margin-bottom:16px;display:flex;align-items:flex-start;gap:10px}
-    .streak{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:13px 16px;margin-bottom:16px;display:flex;align-items:center;gap:12px;transition:all .3s}
-    .sdot{width:8px;height:8px;border-radius:50%;background:var(--border)}
-    .sdot.on{background:var(--accent)}
-    .sdot.now{background:var(--lime)}
-    .cli{display:flex;align-items:center;gap:10px;padding:10px 13px;background:var(--surface);border:1px solid var(--border);border-radius:10px;margin-bottom:7px;cursor:pointer;transition:all .2s}
-    .cli:hover{border-color:var(--border2)}
-    .cli.done{background:var(--accentlt);border-color:var(--border2)}
-    .cc{width:19px;height:19px;border-radius:50%;border:2px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;transition:all .2s}
-    .cli.done .cc{background:var(--accent);border-color:var(--accent)}
-    .ct2{font-size:13px;font-weight:500;color:var(--text)}
-    .cli.done .ct2{color:var(--muted);text-decoration:line-through}
-    .sc{border-radius:16px;padding:20px;cursor:pointer;border:1.5px solid var(--border);background:var(--surface);transition:all .2s}
-    .sc:hover{transform:translateY(-2px);border-color:var(--border2)}
-    .sc-ey{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
-    .sc-title{font-size:16px;font-weight:800;letter-spacing:-.3px;margin-bottom:5px;line-height:1.25;color:var(--text)}
-    .sc-pull{font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:12px}
-    .sc-tags{display:flex;gap:5px;flex-wrap:wrap}
-    .sct{font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px}
-    .wc{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 16px;margin-bottom:16px;transition:all .3s}
-    .wg{width:30px;height:30px;border-radius:8px;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:12px;cursor:pointer;transition:all .2s;background:var(--surface2)}
-    .wg.on{background:var(--skylt);border-color:var(--sky)}
-    .mood-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px}
-    .mb{background:var(--surface);border:1.5px solid var(--border);border-radius:12px;padding:12px 6px;text-align:center;cursor:pointer;transition:all .2s}
-    .mb:hover{border-color:var(--border2);background:var(--purplelt)}
-    .mb.on{border-color:var(--purple);background:var(--purplelt)}
-    .me{font-size:20px;margin-bottom:3px}
-    .ml{font-size:10px;color:var(--muted);font-weight:600}
-    .mb.on .ml{color:var(--purple)}
-    .rc{background:var(--purplelt);border:1px solid #c4b5fd;border-radius:16px;padding:20px;margin-bottom:14px}
-    .dark .rc{border-color:rgba(167,139,250,.3)}
-    .rq{font-size:15px;line-height:1.75;font-style:italic;color:var(--text);margin-bottom:12px}
-    .rs{font-size:12px;color:var(--purple);font-weight:700}
-    .rb{font-size:12px;color:var(--muted)}
-    .spot{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:11px;margin-bottom:7px;cursor:pointer;transition:border-color .2s}
-    .spot:hover{border-color:var(--border2)}
-    .gc{background:var(--surface);border:1.5px solid var(--border);border-radius:14px;padding:15px;cursor:pointer;text-align:center;transition:all .2s}
-    .gc:hover{border-color:var(--border2);background:var(--accentlt)}
-    .gc.on{border-color:var(--accent);background:var(--accentlt)}
-    .gi{font-size:24px;margin-bottom:7px}
-    .gt{font-size:12px;font-weight:600;color:var(--muted);line-height:1.3}
-    .gc.on .gt{color:var(--accent)}
-    .tog{width:38px;height:21px;border-radius:11px;background:var(--border);position:relative;cursor:pointer;transition:background .2s;flex-shrink:0}
-    .tog.on{background:var(--accent)}
-    .tog-dot{width:15px;height:15px;border-radius:50%;background:#fff;position:absolute;top:3px;left:3px;transition:left .2s}
-    .tog.on .tog-dot{left:20px}
-    .sg{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:14px;transition:all .3s}
-    .sr{display:flex;align-items:center;padding:13px 16px;border-bottom:1px solid var(--border);gap:12px}
-    .sr:last-child{border-bottom:none}
-    .si{width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
-    .stl{font-size:14px;font-weight:600;color:var(--text)}
-    .stlb{font-size:12px;color:var(--muted);margin-top:1px}
-    .ai-o{background:var(--surface);border:1.5px solid var(--border);border-radius:14px;padding:14px 16px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:12px;margin-bottom:10px}
-    .ai-o:hover{border-color:var(--border2)}
-    .ai-o.on{border-color:var(--accent);background:var(--accentlt)}
-    .ai-ck{width:18px;height:18px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0;color:#fff;transition:all .2s}
-    .ai-o.on .ai-ck{background:var(--accent);border-color:var(--accent)}
-    .mr{display:flex;align-items:center;gap:8px;margin-bottom:9px;font-size:13px;color:var(--text)}
-    .md{width:10px;height:10px;border-radius:2px;flex-shrink:0}
-    .cr-modal{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:999;display:none;align-items:center;justify-content:center;padding:24px}
-    .cr-modal.on{display:flex}
-    .cr-inner{background:var(--surface);border:1px solid var(--border2);border-radius:24px;padding:40px;max-width:380px;width:100%;text-align:center}
-    .cr-av{width:76px;height:76px;border-radius:50%;background:var(--accentlt);border:3px solid var(--accent);margin:0 auto 14px;display:flex;align-items:center;justify-content:center;font-size:30px}
-    .cr-nm{font-size:20px;font-weight:800;letter-spacing:-.3px;color:var(--text);margin-bottom:3px}
-    .cr-rl{font-size:12px;color:var(--muted);margin-bottom:2px}
-    .cr-lc{font-size:12px;color:var(--accent);font-weight:600;margin-bottom:16px}
-    .cr-dv{width:28px;height:2px;background:var(--accent);border-radius:1px;margin:0 auto 14px}
-    .cr-qt{font-size:13px;color:var(--muted);font-style:italic;line-height:1.6;margin-bottom:16px}
-    .cr-bl{font-size:11px;color:var(--border2);margin-bottom:16px;letter-spacing:.05em}
-    .cr-socs{display:flex;flex-wrap:wrap;justify-content:center;gap:5px;margin-bottom:16px}
-    .cr-s{background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:4px 11px;font-size:11px;font-weight:700;color:var(--text);text-decoration:none;transition:all .2s}
-    .cr-s:hover{border-color:var(--accent);color:var(--accent)}
-    .cr-cl{font-size:13px;color:var(--muted);cursor:pointer;text-decoration:underline}
+    /* BODY */
+    .body{padding:64px 32px;max-width:1040px;margin:0 auto}
+    .section{margin-bottom:56px}
+    .section-eyebrow{font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--accent);text-transform:uppercase;margin-bottom:12px}
+    .section-title{font-size:30px;font-weight:800;letter-spacing:-.5px;color:var(--text);margin-bottom:12px;line-height:1.2}
+    .section-body{font-size:15px;color:var(--muted);line-height:1.75;max-width:620px}
 
+    /* PILLARS */
+    .pillars{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:32px}
+    .pillar{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px 16px;text-align:center;transition:border-color .2s;cursor:default}
+    .pillar:hover{border-color:var(--border2)}
+    .pillar-icon{font-size:24px;margin-bottom:10px}
+    .pillar-name{font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px}
+    .pillar-desc{font-size:11px;color:var(--muted);line-height:1.5}
+    .pillar-bar{height:3px;border-radius:2px;margin-top:12px}
+
+    /* QUOTE */
+    .quote-section{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:40px;margin-bottom:48px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+    .quote-mark{font-size:56px;color:var(--accentlt);font-family:Georgia,serif;line-height:1;margin-bottom:8px}
+    .quote-text{font-size:19px;font-style:italic;color:var(--text);line-height:1.7;margin-bottom:16px}
+    .quote-attr{font-size:12px;color:var(--muted);font-weight:600}
+    .quote-right{display:flex;flex-direction:column;gap:12px}
+    .qr-item{display:flex;align-items:flex-start;gap:10px;padding:14px;background:var(--surface2);border-radius:12px;border:1px solid var(--border)}
+    .qr-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:4px}
+    .qr-text{font-size:13px;color:var(--text);line-height:1.5}
+
+    /* BUILT WITH */
+    .built-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:48px}
+    .built-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px}
+    .built-icon{font-size:20px;margin-bottom:10px}
+    .built-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px}
+    .built-desc{font-size:12px;color:var(--muted);line-height:1.6}
+
+    /* FOUNDER */
+    .founder{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:32px;display:flex;align-items:flex-start;gap:24px;margin-bottom:48px}
+    .founder-avatar{width:64px;height:64px;border-radius:50%;background:var(--accentlt);border:2px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0}
+    .founder-name{font-size:17px;font-weight:800;color:var(--text);margin-bottom:2px}
+    .founder-role{font-size:12px;color:var(--muted);margin-bottom:12px}
+    .founder-note{font-size:14px;color:var(--text);line-height:1.7}
+    .founder-note em{color:var(--accent);font-style:normal;font-weight:600}
+
+    /* CTA BOTTOM */
+    .cta-bottom{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:48px;text-align:center;margin-bottom:0}
+    .cta-bottom-title{font-size:28px;font-weight:800;letter-spacing:-.5px;color:var(--text);margin-bottom:8px}
+    .cta-bottom-sub{font-size:15px;color:var(--muted);margin-bottom:28px;line-height:1.6}
+
+    /* FOOTER */
+    .footer{padding:24px 32px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--surface);flex-wrap:wrap;gap:12px}
+    .footer-logo{font-size:16px;font-weight:800;letter-spacing:-.3px;color:var(--text)}
+    .footer-logo span{color:var(--accent)}
+    .footer-note{font-size:12px;color:var(--muted)}
+    .footer-links{display:flex;gap:16px}
+    .footer-link{font-size:12px;color:var(--muted);cursor:pointer;transition:color .15s}
+    .footer-link:hover{color:var(--accent)}
+
+    /* RESPONSIVE */
     @media(max-width:768px){
-      .dl{grid-template-columns:1fr}
-      .sb{display:none}
-      .intro-body{padding:24px;grid-template-columns:1fr;gap:24px}
-      .intro-body .intro-why{grid-column:1}
-      .g3{grid-template-columns:repeat(2,1fr)}
-      .g4{grid-template-columns:repeat(2,1fr)}
+      .hero-title{font-size:36px}
+      .hero-sub{font-size:15px}
+      .pillars{grid-template-columns:repeat(2,1fr)}
+      .pillars .pillar:last-child{grid-column:1/-1}
+      .quote-section{grid-template-columns:1fr}
+      .built-row{grid-template-columns:1fr}
+      .body{padding:40px 20px}
+      .hero{padding:48px 20px 40px}
+      .founder{flex-direction:column}
+      .nav{padding:0 20px}
     }
   </style>
 </head>
 <body>
-<div class="app" id="app">
-  <nav class="topnav">
-    <div class="logo" id="lyfLogo" onmousedown="startLP()" onmouseup="cancelLP()" ontouchstart="startLP()" ontouchend="cancelLP()">L<span>y</span>f</div>
-    <div class="nav-items" id="navItems" style="display:none">
-      <div class="ni" onclick="go('dash')">🏠 Home</div>
-      <div class="ni" onclick="go('fitness')">💪 Fitness</div>
-      <div class="ni" onclick="go('mind')">🧠 Mind</div>
-      <div class="ni" onclick="go('happy')">☀️ Happiness</div>
-      <div class="ni" onclick="go('nature')">🌿 Nature</div>
-      <div class="ni" onclick="go('connect')">👥 Connect</div>
-      <div class="ni" onclick="go('settings')">⚙️ Settings</div>
-    </div>
+<div class="page">
+
+  <nav class="nav">
+    <div class="nav-logo">L<span>y</span>f</div>
     <div class="nav-right">
-      <div class="nav-score" id="navScore" style="display:none">✦ 42 Vitality</div>
-      <div class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙</div>
+      <div class="nav-link" onclick="trackEvent('nav_about_click')">About</div>
+      <div class="nav-link" onclick="trackEvent('nav_howto_click')">How it works</div>
+      <div class="nav-cta" onclick="trackEvent('nav_cta_click')">Get started →</div>
     </div>
   </nav>
-  <div class="main">
 
-    <!-- INTRO -->
-    <div id="s-intro" class="screen on">
-      <div class="intro-wrap">
-        <div class="intro-hero">
-          <div class="intro-logo">L<span>y</span>f</div>
-          <div class="intro-tagline">Health is how you live — not just how you look.<br>A life companion for your body, mind, and soul.</div>
-          <button class="intro-cta" onclick="go('ob')">Get started — it's free →</button>
-          <div class="intro-note">No accounts needed · 3 steps to personalise · Built in Bangalore 🇮🇳</div>
+  <div class="hero">
+    <div class="hero-badge"><div class="hero-badge-dot"></div>Your life companion — not just a fitness app</div>
+    <div class="hero-title">Health is how<br>you <span>live</span></div>
+    <div class="hero-sub">Not just how you look. Lyf is built around the whole you — body, mind, happiness, nature, and the people you love.</div>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="trackEvent('hero_cta_primary')">Start your Lyf journey →</button>
+      <button class="btn-secondary" onclick="trackEvent('hero_cta_secondary')">See how it works</button>
+    </div>
+    <div class="hero-note">Free to start &nbsp;·&nbsp; No account needed &nbsp;·&nbsp; Built in <span>Bangalore 🇮🇳</span></div>
+  </div>
+
+  <div class="body">
+
+    <div class="section">
+      <div class="section-eyebrow">Why Lyf exists</div>
+      <div class="section-title">The healthiest people never go to the gym</div>
+      <div class="section-body">Village farmers walk 10km a day — not on a treadmill, but through living. They eat with the seasons, sleep with the sun, and belong to a community. Modern health apps missed all of that. Lyf brings those principles back, personalised by AI, built for today's urban life.</div>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="pillar-icon">💪</div>
+          <div class="pillar-name">Fitness</div>
+          <div class="pillar-desc">Workouts, nutrition, body tracking</div>
+          <div class="pillar-bar" style="background:#dcfce7;border:1px solid #86efac"></div>
         </div>
-        <div class="intro-body">
-          <div class="intro-why">
-            <div class="intro-why-title">Why Lyf exists</div>
-            <div class="intro-why-sub">Most health apps obsess over calories and steps. Lyf was built on a different belief — that the healthiest people in the world aren't gym-obsessed. They're village farmers who walk naturally, eat seasonally, sleep with the sun, and live in community. Lyf brings that philosophy to modern urban life, with AI to personalise every aspect of it for you.</div>
-          </div>
-          <div>
-            <div class="intro-col-title">What Lyf covers</div>
-            <div class="intro-pills">
-              <div class="intro-pill"><div class="ip-icon" style="background:var(--accentlt)">💪</div><div><div class="ip-title">Fitness & Body</div><div class="ip-sub">Personalised workouts, nutrition, macro tracking — gym or home. Your InBody data decoded.</div></div></div>
-              <div class="intro-pill"><div class="ip-icon" style="background:var(--purplelt)">🧠</div><div><div class="ip-title">Mind & Wellness</div><div class="ip-sub">Mood tracking, breathing exercises, curated book passages, sleep quality, journal prompts.</div></div></div>
-              <div class="intro-pill"><div class="ip-icon" style="background:var(--amberlt)">☀️</div><div><div class="ip-title">Happiness & Joy</div><div class="ip-sub">Gratitude log, digital detox challenges, micro-joy tracking, purpose nudges.</div></div></div>
-              <div class="intro-pill"><div class="ip-icon" style="background:var(--teallt)">🌿</div><div><div class="ip-title">Nature & Escape</div><div class="ip-sub">Sun walk windows, nearby nature spots, weekend escapes, ancestral wisdom, seasonal living.</div></div></div>
-              <div class="intro-pill"><div class="ip-icon" style="background:var(--corallt)">👥</div><div><div class="ip-title">Connection & Tribe</div><div class="ip-sub">Social health tracking, community nudges, local groups — because loneliness is a health crisis.</div></div></div>
-            </div>
-          </div>
-          <div>
-            <div class="intro-col-title">Built on science + wisdom</div>
-            <div class="intro-quote" style="margin-bottom:16px">
-              <div class="iq-text">"The greatest wealth is health. And health is not the absence of disease — it is the fullness of life."</div>
-              <div class="iq-attr">Inspired by Ayurvedic and ancestral living philosophy</div>
-            </div>
-            <div class="intro-stats">
-              <div class="is-stat"><div class="is-val">5</div><div class="is-lbl">Life pillars</div></div>
-              <div class="is-stat"><div class="is-val">AI</div><div class="is-lbl">Personalised</div></div>
-              <div class="is-stat"><div class="is-val">Free</div><div class="is-lbl">To start</div></div>
-            </div>
-            <div class="intro-founder" style="margin-top:14px">
-              <div class="if-avatar">👨‍💻</div>
-              <div>
-                <div class="if-name">Arun Kumar Dave</div>
-                <div class="if-role">Senior Software Engineer · Zohocorp · Bangalore</div>
-                <div class="if-note">"I built Lyf because I couldn't find an app that looked at health the way I did — as a way of living, not a set of metrics."</div>
-              </div>
-            </div>
-          </div>
+        <div class="pillar">
+          <div class="pillar-icon">🧠</div>
+          <div class="pillar-name">Mind</div>
+          <div class="pillar-desc">Mood, sleep, books, breathing</div>
+          <div class="pillar-bar" style="background:#ede9fe;border:1px solid #c4b5fd"></div>
         </div>
-        <div style="text-align:center;padding:24px;border-top:1px solid var(--border)">
-          <button class="intro-cta" onclick="go('ob')" style="margin-bottom:0">Start your Lyf journey →</button>
+        <div class="pillar">
+          <div class="pillar-icon">☀️</div>
+          <div class="pillar-name">Happiness</div>
+          <div class="pillar-desc">Gratitude, joy, purpose, detox</div>
+          <div class="pillar-bar" style="background:#fef3c7;border:1px solid #fcd34d"></div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🌿</div>
+          <div class="pillar-name">Nature</div>
+          <div class="pillar-desc">Sun walks, local spots, escapes</div>
+          <div class="pillar-bar" style="background:#ccfbf1;border:1px solid #5eead4"></div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">👥</div>
+          <div class="pillar-name">Connection</div>
+          <div class="pillar-desc">Social health, tribe, belonging</div>
+          <div class="pillar-bar" style="background:#fee2e2;border:1px solid #fca5a5"></div>
         </div>
       </div>
     </div>
 
-    <!-- ONBOARDING -->
-    <div id="s-ob" class="screen">
-      <div class="ob-wrap">
-        <div class="ob-card">
-          <div class="ob-logo">L<span>y</span>f</div>
-          <div class="ob-tagline">Let's make it yours in 3 quick steps.</div>
-          <div class="ob-prog">
-            <div class="ob-pd on" id="p1"></div>
-            <div class="ob-pd" id="p2"></div>
-            <div class="ob-pd" id="p3"></div>
-          </div>
-          <div class="ob-step on" id="st1">
-            <div class="ob-ey">Step 1 of 3 · Welcome</div>
-            <div class="ob-h">What should we call you?</div>
-            <div class="ob-sub">Just your first name. This stays on your device — nothing is shared.</div>
-            <input class="ob-inp" id="nameInp" placeholder="Your first name" autocomplete="off">
-            <button class="ob-btn" onclick="obGo(2)">Continue →</button>
-          </div>
-          <div class="ob-step" id="st2">
-            <div class="ob-ey">Step 2 of 3 · About you</div>
-            <div class="ob-h">A little about yourself</div>
-            <div class="ob-sub">Helps Lyf personalise your workout, diet, and wellness plans.</div>
-            <input class="ob-inp" placeholder="Your age" type="number" min="10" max="100">
-            <div class="ob-grid">
-              <div class="ob-pill" id="gm" onclick="selG('m')">Male</div>
-              <div class="ob-pill" id="gf" onclick="selG('f')">Female</div>
-              <div class="ob-pill" id="gn" onclick="selG('n')" style="grid-column:1/-1">Prefer not to say</div>
-            </div>
-            <button class="ob-btn" onclick="obGo(3)">Continue →</button>
-          </div>
-          <div class="ob-step" id="st3">
-            <div class="ob-ey">Step 3 of 3 · Location</div>
-            <div class="ob-h">Where are you in the world?</div>
-            <div class="ob-sub">For nearby nature spots, sun walk windows, and local community suggestions.</div>
-            <div class="ob-loc" onclick="document.getElementById('cityInp').value='Bangalore'">
-              <div class="ob-loc-ic">📍</div>
-              <div><div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:2px">Use my location</div><div style="font-size:12px;color:var(--muted)">Auto-detect city for best suggestions</div></div>
-              <div style="margin-left:auto;color:var(--muted)">→</div>
-            </div>
-            <input class="ob-inp" id="cityInp" placeholder="Or type your city...">
-            <button class="ob-btn" onclick="finishOb()">Enter Lyf →</button>
-          </div>
-        </div>
+    <div class="quote-section">
+      <div>
+        <div class="quote-mark">"</div>
+        <div class="quote-text">The richest person is not the one with the most, but the one who needs the least. Health is the same — it's not about doing more, it's about living right.</div>
+        <div class="quote-attr">The philosophy behind Lyf</div>
+      </div>
+      <div class="quote-right">
+        <div class="qr-item"><div class="qr-dot"></div><div class="qr-text">Your AI-powered daily plan adapts to your mood, energy, and goals — not a one-size template</div></div>
+        <div class="qr-item"><div class="qr-dot"></div><div class="qr-text">Location-aware nature spots, sunrise times, and community groups — all near you</div></div>
+        <div class="qr-item"><div class="qr-dot"></div><div class="qr-text">Ancestral wisdom from village living, translated for modern urban life</div></div>
+        <div class="qr-item"><div class="qr-dot"></div><div class="qr-text">One Vitality Score across all five pillars — your whole life, at a glance</div></div>
       </div>
     </div>
 
-    <!-- DASHBOARD -->
-    <div id="s-dash" class="screen">
-      <div class="dl">
-        <aside class="sb">
-          <div class="sb-sec">Overview</div>
-          <div class="sbi on" onclick="go('dash')"><span class="sb-ic">🏠</span>Home</div>
-          <div class="sb-sec">Sections</div>
-          <div class="sbi" onclick="go('fitness')"><span class="sb-ic">💪</span>Fitness & Body</div>
-          <div class="sbi" onclick="go('mind')"><span class="sb-ic">🧠</span>Mind & Wellness</div>
-          <div class="sbi" onclick="go('happy')"><span class="sb-ic">☀️</span>Happiness & Joy</div>
-          <div class="sbi" onclick="go('nature')"><span class="sb-ic">🌿</span>Nature & Escape</div>
-          <div class="sbi" onclick="go('connect')"><span class="sb-ic">👥</span>Connection</div>
-          <div class="sb-sec">Account</div>
-          <div class="sbi" onclick="go('settings')"><span class="sb-ic">⚙️</span>Settings</div>
-          <div class="sb-bot">
-            <div class="sb-score-lbl">Vitality Score</div>
-            <div class="sb-score-num">42</div>
-            <div class="sb-score-sub">Keep building — on a streak</div>
-            <div class="sb-brow"><span style="width:50px">Fitness</span><div class="sb-bbg"><div class="sb-bfill" style="width:60%;background:var(--accent)"></div></div><span style="font-size:10px;font-weight:700;color:var(--accent)">12</span></div>
-            <div class="sb-brow"><span style="width:50px">Mind</span><div class="sb-bbg"><div class="sb-bfill" style="width:40%;background:var(--purple)"></div></div><span style="font-size:10px;font-weight:700;color:var(--purple)">8</span></div>
-            <div class="sb-brow"><span style="width:50px">Joy</span><div class="sb-bbg"><div class="sb-bfill" style="width:50%;background:var(--amber)"></div></div><span style="font-size:10px;font-weight:700;color:var(--amber)">10</span></div>
-            <div class="sb-brow"><span style="width:50px">Nature</span><div class="sb-bbg"><div class="sb-bfill" style="width:30%;background:var(--teal)"></div></div><span style="font-size:10px;font-weight:700;color:var(--teal)">6</span></div>
-            <div class="sb-brow"><span style="width:50px">Connect</span><div class="sb-bbg"><div class="sb-bfill" style="width:30%;background:var(--coral)"></div></div><span style="font-size:10px;font-weight:700;color:var(--coral)">6</span></div>
-          </div>
-        </aside>
-        <div class="ct">
-          <div class="pt">Good morning, <span id="dn" style="color:var(--accent)">Arun</span> 👋</div>
-          <div class="ps">Your whole life, in one place. <span id="cs" style="color:var(--accent);font-weight:600">· Bangalore</span></div>
-          <div class="streak"><span style="font-size:24px">🔥</span><div><div style="font-size:16px;font-weight:800;color:var(--text)">5 day streak</div><div style="font-size:12px;color:var(--muted)">Don't break it — you're building a habit</div></div><div style="display:flex;gap:5px;margin-left:auto"><div class="sdot on"></div><div class="sdot on"></div><div class="sdot on"></div><div class="sdot on"></div><div class="sdot now"></div><div class="sdot"></div><div class="sdot"></div></div></div>
-          <div class="banner" style="background:var(--amberlt);border:1px solid #fcd34d"><span style="font-size:15px">☀️</span><div style="font-size:13px;color:var(--amber)">Best sun window today: <strong>6:45–8:20am</strong> &nbsp;·&nbsp; <span id="cl2" style="font-weight:600">Bangalore</span> &nbsp;·&nbsp; UV index: Low</div></div>
-          <div class="banner" style="background:var(--accentlt);border:1px solid var(--border2)"><span style="font-size:15px">🌱</span><div><div style="font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--accent);text-transform:uppercase;margin-bottom:4px">Today's insight</div><div style="font-size:14px;color:var(--text);line-height:1.6">"Village people walk 8–12km naturally every day — not in a gym, but through living. Your body was designed for movement."</div></div></div>
-          <div class="g2">
-            <div>
-              <div class="clbl">Today's checklist</div>
-              <div class="cli done" onclick="tCL(this)"><div class="cc">✓</div><div class="ct2">Drank 2 glasses of water on waking</div></div>
-              <div class="cli" onclick="tCL(this)"><div class="cc"></div><div class="ct2">Logged today's mood</div></div>
-              <div class="cli" onclick="tCL(this)"><div class="cc"></div><div class="ct2">10 min outdoors / sunlight</div></div>
-              <div class="cli" onclick="tCL(this)"><div class="cc"></div><div class="ct2">Read for 5 minutes</div></div>
-              <div class="cli" onclick="tCL(this)"><div class="cc"></div><div class="ct2">Connected with someone today</div></div>
-            </div>
-            <div>
-              <div class="clbl">Quick stats</div>
-              <div class="g3" style="margin-bottom:12px">
-                <div class="stat"><div class="sv" style="color:var(--accent)">66.6<span style="font-size:11px">kg</span></div><div class="sl">Weight</div></div>
-                <div class="stat"><div class="sv" style="color:var(--coral)">28.4<span style="font-size:11px">%</span></div><div class="sl">Body fat</div></div>
-                <div class="stat"><div class="sv" style="color:var(--amber)">68</div><div class="sl">InBody</div></div>
-              </div>
-              <div class="wc"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><div style="font-size:13px;font-weight:600;color:var(--text)">💧 Water · 3.5L goal</div><div style="font-size:14px;font-weight:800;color:var(--sky)" id="wcn">4/12</div></div><div style="display:flex;gap:5px;flex-wrap:wrap" id="wgl"></div></div>
-            </div>
-          </div>
-          <div class="clbl">Explore sections</div>
-          <div class="g3">
-            <div class="sc" style="border-top:3px solid var(--accent)" onclick="go('fitness')"><div class="sc-ey" style="color:var(--accent)">Fitness & Body</div><div class="sc-title">How do you want to feel?</div><div class="sc-pull">Workouts · Nutrition · Goals</div><div class="sc-tags"><span class="sct" style="background:var(--accentlt);color:var(--accent)">Workout</span><span class="sct" style="background:var(--accentlt);color:var(--accent)">Meals</span></div></div>
-            <div class="sc" style="border-top:3px solid var(--purple)" onclick="go('mind')"><div class="sc-ey" style="color:var(--purple)">Mind & Wellness</div><div class="sc-title">What's in your head?</div><div class="sc-pull">Mood · Breathing · Books</div><div class="sc-tags"><span class="sct" style="background:var(--purplelt);color:var(--purple)">Mood</span><span class="sct" style="background:var(--purplelt);color:var(--purple)">Books</span></div></div>
-            <div class="sc" style="border-top:3px solid var(--amber)" onclick="go('happy')"><div class="sc-ey" style="color:var(--amber)">Happiness & Joy</div><div class="sc-title">When did you feel alive?</div><div class="sc-pull">Micro-joys · Gratitude</div><div class="sc-tags"><span class="sct" style="background:var(--amberlt);color:var(--amber)">Joy log</span></div></div>
-            <div class="sc" style="border-top:3px solid var(--teal)" onclick="go('nature')"><div class="sc-ey" style="color:var(--teal)">Nature & Escape</div><div class="sc-title">Built for the outdoors</div><div class="sc-pull">Sun walks · Spots · Escapes</div><div class="sc-tags"><span class="sct" style="background:var(--teallt);color:var(--teal)">Near me</span></div></div>
-            <div class="sc" style="border-top:3px solid var(--coral)" onclick="go('connect')"><div class="sc-ey" style="color:var(--coral)">Connection & Tribe</div><div class="sc-title">Who fills your energy?</div><div class="sc-pull">Social health · Community</div><div class="sc-tags"><span class="sct" style="background:var(--corallt);color:var(--coral)">Nudge</span></div></div>
-            <div class="sc" style="border-top:3px solid var(--sky)" onclick="go('settings')"><div class="sc-ey" style="color:var(--sky)">Settings</div><div class="sc-title">Customise your Lyf</div><div class="sc-pull">AI · Preferences · Analytics</div><div class="sc-tags"><span class="sct" style="background:var(--skylt);color:var(--sky)">AI switcher</span></div></div>
-          </div>
-        </div>
+    <div class="built-row">
+      <div class="built-card">
+        <div class="built-icon">✦</div>
+        <div class="built-title">AI that actually knows you</div>
+        <div class="built-desc">Powered by Gemini (free) or Claude (premium). Generates personalised meal plans, workouts, book passages, and nature suggestions — based on your stats, mood, and goals.</div>
+      </div>
+      <div class="built-card">
+        <div class="built-icon">📊</div>
+        <div class="built-title">Built on real data</div>
+        <div class="built-desc">Upload your InBody report and Lyf reads your body fat, muscle mass, visceral fat, and waist-hip ratio — then builds your plan around what the numbers actually say.</div>
+      </div>
+      <div class="built-card">
+        <div class="built-icon">🔒</div>
+        <div class="built-title">Private by design</div>
+        <div class="built-desc">Your data stays yours. No selling, no ads, no third-party sharing. Lyf is a tool, not a platform trying to own your attention.</div>
       </div>
     </div>
 
-    <!-- SETTINGS (abbreviated — full sections load from JS) -->
-    <div id="s-settings" class="screen">
-      <div class="dl">
-        <aside class="sb">
-          <div class="sbi" onclick="go('dash')"><span class="sb-ic">🏠</span>Home</div>
-          <div class="sbi" onclick="go('fitness')"><span class="sb-ic">💪</span>Fitness</div>
-          <div class="sbi" onclick="go('mind')"><span class="sb-ic">🧠</span>Mind</div>
-          <div class="sbi" onclick="go('happy')"><span class="sb-ic">☀️</span>Happiness</div>
-          <div class="sbi" onclick="go('nature')"><span class="sb-ic">🌿</span>Nature</div>
-          <div class="sbi" onclick="go('connect')"><span class="sb-ic">👥</span>Connect</div>
-          <div class="sbi on"><span class="sb-ic">⚙️</span>Settings</div>
-        </aside>
-        <div class="ct">
-          <div class="pt">Settings</div>
-          <div class="ps">Personalise your Lyf experience</div>
-          <div class="g2">
-            <div>
-              <div class="clbl">AI Provider</div>
-              <div class="ai-o on" id="aiG" onclick="swAI('gemini')"><div style="width:34px;height:34px;border-radius:10px;background:var(--accentlt);display:flex;align-items:center;justify-content:center;font-size:16px">✦</div><div style="flex:1"><div style="font-size:14px;font-weight:700;color:var(--text)">Gemini <span id="gB" style="font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px;background:var(--accentlt);color:var(--accent)">Active</span></div><div style="font-size:12px;color:var(--muted);margin-top:1px">Google AI · Free tier · Fast</div></div><div class="ai-ck on" id="gCk">✓</div></div>
-              <div class="ai-o" id="aiC" onclick="swAI('claude')"><div style="width:34px;height:34px;border-radius:10px;background:var(--corallt);display:flex;align-items:center;justify-content:center;font-size:16px">◆</div><div style="flex:1"><div style="font-size:14px;font-weight:700;color:var(--text)">Claude <span id="cB" style="font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px;background:var(--surface2);color:var(--muted)">Premium</span></div><div style="font-size:12px;color:var(--muted);margin-top:1px">Anthropic · Smarter · Add credits to enable</div></div><div class="ai-ck" id="cCk"></div></div>
-              <div class="clbl" style="margin-top:18px">Theme</div>
-              <div class="sg"><div class="sr"><div class="si" style="background:var(--surface2)">🌙</div><div style="flex:1"><div class="stl">Dark mode</div><div class="stlb" id="themeLabel">Currently: Light</div></div><div class="tog" id="themeToggle" onclick="toggleTheme()"><div class="tog-dot"></div></div></div></div>
-              <div class="clbl">Preferences</div>
-              <div class="sg">
-                <div class="sr"><div class="si" style="background:var(--amberlt)">🔔</div><div style="flex:1"><div class="stl">Daily reminders</div><div class="stlb">Nudges, sun window, checklist</div></div><div class="tog on" onclick="this.classList.toggle('on')"><div class="tog-dot"></div></div></div>
-                <div class="sr"><div class="si" style="background:var(--accentlt)">📍</div><div style="flex:1"><div class="stl">Location</div><div class="stlb">Bangalore, India</div></div><div style="font-size:12px;color:var(--accent);cursor:pointer;font-weight:600">Change</div></div>
-              </div>
-            </div>
-            <div>
-              <div class="clbl">Analytics</div>
-              <div class="sg" style="margin-bottom:16px">
-                <div class="sr"><div class="si" style="background:var(--amberlt)">📊</div><div style="flex:1"><div class="stl">Apptics</div><div class="stlb">Crash reports · Session analytics</div></div><div class="tog on" onclick="this.classList.toggle('on')"><div class="tog-dot"></div></div></div>
-                <div class="sr"><div class="si" style="background:var(--corallt)">🔥</div><div style="flex:1"><div class="stl">Firebase Analytics</div><div class="stlb">Product events · User journeys</div></div><div class="tog on" onclick="this.classList.toggle('on')"><div class="tog-dot"></div></div></div>
-              </div>
-              <div class="clbl">Account</div>
-              <div class="sg">
-                <div class="sr"><div class="si" style="background:var(--accentlt)">👤</div><div style="flex:1"><div class="stl" id="settingsName">Arun Kumar Dave</div><div class="stlb">Bangalore · Zohocorp</div></div><div style="font-size:12px;color:var(--accent);cursor:pointer;font-weight:600">Edit</div></div>
-                <div class="sr"><div class="si" style="background:var(--corallt)">🚪</div><div style="flex:1"><div class="stl" style="color:var(--coral)">Sign out</div></div></div>
-              </div>
-              <div style="text-align:center;margin-top:20px;padding:14px;background:var(--surface);border-radius:12px;border:1px solid var(--border)">
-                <div style="font-size:12px;color:var(--muted)">Lyf v1.0.0 · Firebase: lyfapp-6a3c6 · AI: Gemini</div>
-                <div style="font-size:11px;color:var(--border2);margin-top:4px">Long press the Lyf logo to see credits</div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div class="founder">
+      <div class="founder-avatar">👨‍💻</div>
+      <div>
+        <div class="founder-name">Arun Kumar Dave</div>
+        <div class="founder-role">Senior Software Engineer · Zohocorp · Bangalore</div>
+        <div class="founder-note">"I built Lyf because I couldn't find an app that looked at health the way I did — as a <em>way of living</em>, not a set of metrics to hit. After my own InBody scan showed me the gap between how I looked and how I was actually living, I wanted something that addressed the whole picture. Lyf is that attempt."</div>
       </div>
+    </div>
+
+    <div class="cta-bottom">
+      <div class="cta-bottom-title">Your whole life, in one place.</div>
+      <div class="cta-bottom-sub">3 steps to set up. No account needed to start.<br>Completely free to explore all five sections.</div>
+      <button class="btn-primary" style="font-size:16px;padding:15px 40px" onclick="trackEvent('bottom_cta_click')">Start your Lyf journey →</button>
+      <div style="margin-top:14px;font-size:12px;color:var(--muted)">Built with love in Bangalore 🇮🇳 · Powered by AI · Free to start</div>
     </div>
 
   </div>
-</div>
 
-<!-- CREDITS -->
-<div class="cr-modal" id="crModal">
-  <div class="cr-inner">
-    <div class="cr-av">👨‍💻</div>
-    <div class="cr-nm">Arun Kumar Dave</div>
-    <div class="cr-rl">Senior Software Engineer · Zohocorp</div>
-    <div class="cr-lc">📍 Bangalore, India</div>
-    <div class="cr-dv"></div>
-    <div class="cr-qt">"Building things that matter — one line of code, one life at a time."</div>
-    <div class="cr-bl">✦ Lyf was vibe coded by Arun ✦</div>
-    <div class="cr-socs">
-      <a href="https://linkedin.com/in/arun-kumar-dave" class="cr-s" target="_blank">LinkedIn</a>
-      <a href="https://instagram.com/arunkumardave" class="cr-s" target="_blank">Instagram</a>
-      <a href="https://x.com/ArunKumarDave8" class="cr-s" target="_blank">X</a>
-      <a href="https://medium.com/@arunkumardave" class="cr-s" target="_blank">Medium</a>
-      <a href="https://topmate.io/arun_kumar_dave" class="cr-s" target="_blank">Topmate</a>
-      <a href="https://dev.to/arunkumardave" class="cr-s" target="_blank">Dev.to</a>
-      <a href="https://producthunt.com/@arunkumardave" class="cr-s" target="_blank">Product Hunt</a>
+  <footer class="footer">
+    <div class="footer-logo">L<span>y</span>f</div>
+    <div class="footer-note">© 2025 Lyf · Made by Arun Kumar Dave</div>
+    <div class="footer-links">
+      <div class="footer-link">Privacy</div>
+      <div class="footer-link" onclick="trackEvent('footer_credits_click')">Credits</div>
+      <div class="footer-link">GitHub</div>
     </div>
-    <div class="cr-cl" onclick="document.getElementById('crModal').classList.remove('on')">Close</div>
-  </div>
+  </footer>
+
 </div>
 
 <script>
-let isDark=false,lpTimer=null,wFilled=4;
-const navTabs=['dash','fitness','mind','happy','nature','connect','settings'];
-
-function go(id){
-  document.querySelectorAll('.screen').forEach(s=>{s.classList.remove('on');s.style.display='none'});
-  const s=document.getElementById('s-'+id);
-  if(s){s.style.display='flex';s.classList.add('on')}
-  const showNav=!['intro','ob'].includes(id);
-  document.getElementById('navItems').style.display=showNav?'flex':'none';
-  document.getElementById('navScore').style.display=showNav?'flex':'none';
-  document.querySelectorAll('.ni').forEach((n,i)=>n.classList.toggle('on',navTabs[i]===id));
-  if(id==='dash')initWater();
-  window.scrollTo(0,0);
-}
-
-function toggleTheme(){
-  isDark=!isDark;
-  document.getElementById('app').classList.toggle('dark',isDark);
-  document.body.style.background=isDark?'#040d07':'#e6f7ed';
-  document.getElementById('themeBtn').textContent=isDark?'☀️':'🌙';
-  const tl=document.getElementById('themeLabel');
-  if(tl)tl.textContent='Currently: '+(isDark?'Dark':'Light');
-  const tog=document.getElementById('themeToggle');
-  if(tog)tog.classList.toggle('on',isDark);
-}
-
-function obGo(n){
-  document.querySelectorAll('.ob-step').forEach(s=>s.classList.remove('on'));
-  document.getElementById('st'+n).classList.add('on');
-  for(let i=1;i<=3;i++) document.getElementById('p'+i).classList.toggle('on',i<=n);
-}
-function selG(g){['m','f','n'].forEach(x=>document.getElementById('g'+x).classList.remove('on'));document.getElementById('g'+g).classList.add('on')}
-function finishOb(){
-  const name=document.getElementById('nameInp').value.trim()||'there';
-  const city=document.getElementById('cityInp').value.trim()||'Bangalore';
-  const dn=document.getElementById('dn');if(dn)dn.textContent=name;
-  const cs=document.getElementById('cs');if(cs)cs.textContent='· '+city;
-  const cl2=document.getElementById('cl2');if(cl2)cl2.textContent=city;
-  const sn=document.getElementById('settingsName');if(sn)sn.textContent=name;
-  const h=new Date().getHours();
-  const pt=document.querySelector('#s-dash .pt');
-  if(pt)pt.innerHTML=(h<12?'Good morning, ':'h<17?''Good afternoon, ':''Good evening, '')+`<span id="dn" style="color:var(--accent)">${name}</span> 👋`;
-  go('dash');
-}
-
-function initWater(){
-  const w=document.getElementById('wgl');if(!w)return;
-  w.innerHTML='';
-  for(let i=0;i<12;i++){
-    const g=document.createElement('div');
-    g.className='wg'+(i<4?' on':'');g.textContent='💧';
-    g.onclick=()=>{g.classList.toggle('on');wFilled=w.querySelectorAll('.wg.on').length;const wc=document.getElementById('wcn');if(wc)wc.textContent=wFilled+'/12'};
-    w.appendChild(g);
+// Apptics event tracker — safe wrapper
+function trackEvent(eventName, props) {
+  try {
+    window.appticsReady(function() {
+      if (window.apptics && window.apptics.track) {
+        window.apptics.track(eventName, props || {});
+      }
+    });
+  } catch(e) {
+    console.log('[Apptics]', eventName, props);
   }
 }
 
-function tCL(el){el.classList.toggle('done');el.querySelector('.cc').textContent=el.classList.contains('done')?'✓':''}
+// Track page view on load
+window.addEventListener('load', function() {
+  trackEvent('page_view', { page: 'intro' });
+});
 
-function swAI(p){
-  document.getElementById('aiG').classList.toggle('on',p==='gemini');
-  document.getElementById('aiC').classList.toggle('on',p==='claude');
-  document.getElementById('gCk').textContent=p==='gemini'?'✓':'';
-  document.getElementById('gCk').classList.toggle('on',p==='gemini');
-  document.getElementById('cCk').textContent=p==='claude'?'✓':'';
-  document.getElementById('cCk').classList.toggle('on',p==='claude');
-  document.getElementById('gB').textContent=p==='gemini'?'Active':'Free';
-  document.getElementById('gB').style.background=p==='gemini'?'var(--accentlt)':'var(--surface2)';
-  document.getElementById('gB').style.color=p==='gemini'?'var(--accent)':'var(--muted)';
-  document.getElementById('cB').textContent=p==='claude'?'Active':'Premium';
-  document.getElementById('cB').style.background=p==='claude'?'var(--corallt)':'var(--surface2)';
-  document.getElementById('cB').style.color=p==='claude'?'var(--coral)':'var(--muted)';
-}
-
-function startLP(){lpTimer=setTimeout(()=>document.getElementById('crModal').classList.add('on'),1500)}
-function cancelLP(){clearTimeout(lpTimer)}
-
-go('intro');
-initWater();
+// Track scroll depth
+var scrollTracked = { 25: false, 50: false, 75: false, 100: false };
+window.addEventListener('scroll', function() {
+  var pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+  [25, 50, 75, 100].forEach(function(d) {
+    if (pct >= d && !scrollTracked[d]) {
+      scrollTracked[d] = true;
+      trackEvent('scroll_depth', { depth: d + '%' });
+    }
+  });
+});
 </script>
 </body>
 </html>
