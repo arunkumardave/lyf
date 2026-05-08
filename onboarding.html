@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lyf — Get Started</title>
+
+  <script>
+    (function(){
+      var DK='lyf_device_id',VK='lyf_device_seen',did=null,isNew=false;
+      try{
+        did=localStorage.getItem(DK);
+        if(!did){did='lyf-'+Date.now()+'-'+Math.random().toString(36).substr(2,9);localStorage.setItem(DK,did);}
+        isNew=!localStorage.getItem(VK);localStorage.setItem(VK,'1');
+      }catch(e){did='lyf-mem-'+Date.now();isNew=true;}
+      window.__lyfDeviceId=did;window.__lyfIsNewDevice=isNew;
+    })();
+  </script>
+  <script type="text/javascript" id="zohoapptics">var d=document,s=d.createElement("script");s.type="text/javascript";s.id="zohoappticsscript";s.defer=!0;s.src="https://apptics.zoho.in/sdk/web/v1/60070142391/315000000002032/init?aaID=315000000003007";var t=d.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t);window.appticsReady=function(s){var e=window.apptics__asyncalls=window.apptics__asyncalls||[];window.appticsReadyStatus?(s&&e.push(s),e.forEach(s=>s&&s()),window.apptics__asyncalls=null):s&&e.push(s)};</script>
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="index.html" class="nav-logo">L<span>y</span>f</a>
+  <div class="nav-right">
+    <div class="theme-btn" id="themeBtn" onclick="toggleTheme()">🌙</div>
+  </div>
+</nav>
+
+<div class="centered-wrap">
+  <div class="ob-card">
+
+    <!-- Progress bar -->
+    <div class="ob-progress">
+      <div class="ob-progress-fill" id="obProgress" style="width:33%"></div>
+    </div>
+
+    <div class="ob-body">
+
+      <!-- Step 1: Name -->
+      <div class="ob-step" id="step1">
+        <div class="eyebrow">Step 1 of 3 · Welcome</div>
+        <div style="font-size:24px;font-weight:800;letter-spacing:-.5px;color:var(--text);margin-bottom:8px">What should we call you?</div>
+        <div style="font-size:14px;color:var(--muted);line-height:1.65;margin-bottom:24px">Just your first name. Everything stays on your device — nothing is shared or stored online.</div>
+        <div class="input-group">
+          <label class="input-label">First name</label>
+          <input class="input" id="nameInp" type="text" placeholder="e.g. Arun" autocomplete="given-name" autocapitalize="words">
+        </div>
+        <button class="btn btn-primary btn-full" id="step1Btn" onclick="goStep(2)" disabled>Continue →</button>
+      </div>
+
+      <!-- Step 2: About you -->
+      <div class="ob-step" id="step2" style="display:none">
+        <div class="eyebrow">Step 2 of 3 · About you</div>
+        <div style="font-size:24px;font-weight:800;letter-spacing:-.5px;color:var(--text);margin-bottom:8px">A little about yourself</div>
+        <div style="font-size:14px;color:var(--muted);line-height:1.65;margin-bottom:24px">Helps Lyf build your personalised workout, diet, and wellness plan.</div>
+        <div class="input-group">
+          <label class="input-label">Age</label>
+          <input class="input" id="ageInp" type="number" min="10" max="100" placeholder="Your age">
+        </div>
+        <div class="input-group">
+          <label class="input-label">Biological sex</label>
+          <div class="grid-3" style="gap:8px">
+            <div class="pill" id="gMale"   onclick="selGender('male')">  <div class="pill-label">Male</div></div>
+            <div class="pill" id="gFemale" onclick="selGender('female')"><div class="pill-label">Female</div></div>
+            <div class="pill" id="gOther"  onclick="selGender('prefer_not')" style="grid-column:1/-1"><div class="pill-label">Prefer not to say</div></div>
+          </div>
+        </div>
+        <div class="input-group">
+          <label class="input-label">Primary goal</label>
+          <div class="grid-2" style="gap:8px">
+            <div class="pill" id="gLoseFat"    onclick="selGoal('lose_fat')">    <div class="pill-icon">🔥</div><div class="pill-label">Lose fat</div>    <div class="pill-sub">Reduce body fat %</div></div>
+            <div class="pill" id="gMuscle"     onclick="selGoal('build_muscle')"><div class="pill-icon">💪</div><div class="pill-label">Build muscle</div><div class="pill-sub">Gain strength</div></div>
+            <div class="pill" id="gEnergy"     onclick="selGoal('more_energy')"> <div class="pill-icon">⚡</div><div class="pill-label">More energy</div> <div class="pill-sub">Feel less tired</div></div>
+            <div class="pill" id="gHealthy"    onclick="selGoal('feel_healthy')"><div class="pill-icon">🫀</div><div class="pill-label">Feel healthier</div><div class="pill-sub">Overall wellness</div></div>
+          </div>
+        </div>
+        <button class="btn btn-primary btn-full" id="step2Btn" onclick="goStep(3)" disabled>Continue →</button>
+      </div>
+
+      <!-- Step 3: Location -->
+      <div class="ob-step" id="step3" style="display:none">
+        <div class="eyebrow">Step 3 of 3 · Location</div>
+        <div style="font-size:24px;font-weight:800;letter-spacing:-.5px;color:var(--text);margin-bottom:8px">Where are you in the world?</div>
+        <div style="font-size:14px;color:var(--muted);line-height:1.65;margin-bottom:24px">For nearby nature spots, sun walk windows, and local community suggestions.</div>
+        <div class="loc-detect" onclick="detectLocation()">
+          <div class="loc-icon">📍</div>
+          <div>
+            <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:2px">Use my location</div>
+            <div style="font-size:12px;color:var(--muted)" id="locStatus">Auto-detect your city</div>
+          </div>
+          <div style="margin-left:auto;color:var(--muted);font-size:16px">→</div>
+        </div>
+        <div class="divider">or type it</div>
+        <div class="input-group">
+          <label class="input-label">City</label>
+          <input class="input" id="cityInp" type="text" placeholder="e.g. Bangalore" autocomplete="address-level2">
+        </div>
+        <button class="btn btn-primary btn-full" id="step3Btn" onclick="goStep(4)" disabled>Enter Lyf →</button>
+      </div>
+
+      <!-- Step 4: Summary -->
+      <div class="ob-step" id="step4" style="display:none">
+        <div class="eyebrow">All set ✓</div>
+        <div style="font-size:24px;font-weight:800;letter-spacing:-.5px;color:var(--text);margin-bottom:8px">Here's your Lyf profile</div>
+        <div style="font-size:14px;color:var(--muted);line-height:1.65;margin-bottom:20px">Saved to your device. You can update any of this in Settings anytime.</div>
+        <div class="summary-card" id="summaryCard"></div>
+        <button class="btn btn-primary btn-full" onclick="enterApp()">Take me to my dashboard →</button>
+      </div>
+
+    </div>
+
+    <!-- Footer: dots + step label -->
+    <div class="ob-footer">
+      <div class="ob-dots">
+        <div class="ob-dot active" id="dot1"></div>
+        <div class="ob-dot"        id="dot2"></div>
+        <div class="ob-dot"        id="dot3"></div>
+      </div>
+      <div style="font-size:12px;color:var(--muted)" id="stepLabel">Step 1 of 3</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Credits modal -->
+<div class="modal-overlay" id="creditsModal" onclick="if(event.target===this)closeCredits()">
+  <div class="modal-box" style="text-align:center">
+    <div class="credits-avatar">👨‍💻</div>
+    <div style="font-size:20px;font-weight:800;color:var(--text);margin-bottom:3px">Arun Kumar Dave</div>
+    <div style="font-size:12px;color:var(--muted);margin-bottom:2px">Senior Software Engineer · Zohocorp</div>
+    <div style="font-size:12px;color:var(--accent);font-weight:600;margin-bottom:16px">📍 Bangalore, India</div>
+    <div class="credits-divider"></div>
+    <div style="font-size:13px;color:var(--muted);font-style:italic;line-height:1.6;margin-bottom:14px">"Building things that matter — one line of code, one life at a time."</div>
+    <div style="font-size:11px;color:var(--border2);margin-bottom:16px">✦ Lyf was vibe coded by Arun ✦</div>
+    <div class="credits-socials">
+      <a href="https://linkedin.com/in/arun-kumar-dave" target="_blank" class="credits-soc">LinkedIn</a>
+      <a href="https://instagram.com/arunkumardave"      target="_blank" class="credits-soc">Instagram</a>
+      <a href="https://x.com/ArunKumarDave8"            target="_blank" class="credits-soc">X</a>
+      <a href="https://medium.com/@arunkumardave"        target="_blank" class="credits-soc">Medium</a>
+      <a href="https://topmate.io/arun_kumar_dave"       target="_blank" class="credits-soc">Topmate</a>
+      <a href="https://dev.to/arunkumardave"             target="_blank" class="credits-soc">Dev.to</a>
+    </div>
+    <span style="font-size:13px;color:var(--muted);cursor:pointer;text-decoration:underline" onclick="closeCredits()">Close</span>
+  </div>
+</div>
+
+<script src="js/apptics.js"></script>
+<script src="js/profile.js"></script>
+<script src="js/vitality.js"></script>
+<script src="js/catalyst.js"></script>
+<script src="js/ai.js"></script>
+<script src="js/app.js"></script>
+<script>
+  var profile = { name:'', age:'', gender:'', goal:'', city:'' };
+  var currentStep = 1;
+
+  /* ── Input listeners ── */
+  document.getElementById('nameInp').addEventListener('input', function () {
+    document.getElementById('step1Btn').disabled = this.value.trim().length < 1;
+  });
+  document.getElementById('ageInp').addEventListener('input', checkStep2);
+  document.getElementById('cityInp').addEventListener('input', function () {
+    document.getElementById('step3Btn').disabled = this.value.trim().length < 1;
+  });
+
+  /* ── Gender selection ── */
+  function selGender(val) {
+    profile.gender = val;
+    ['gMale','gFemale','gOther'].forEach(function(id){ document.getElementById(id).classList.remove('active'); });
+    var map = { male:'gMale', female:'gFemale', prefer_not:'gOther' };
+    document.getElementById(map[val]).classList.add('active');
+    checkStep2();
+  }
+
+  /* ── Goal selection ── */
+  function selGoal(val) {
+    profile.goal = val;
+    ['gLoseFat','gMuscle','gEnergy','gHealthy'].forEach(function(id){ document.getElementById(id).classList.remove('active'); });
+    var map = { lose_fat:'gLoseFat', build_muscle:'gMuscle', more_energy:'gEnergy', feel_healthy:'gHealthy' };
+    document.getElementById(map[val]).classList.add('active');
+    checkStep2();
+  }
+
+  function checkStep2() {
+    var age = document.getElementById('ageInp').value;
+    var validAge = age && parseInt(age,10) >= 10 && parseInt(age,10) <= 100;
+    document.getElementById('step2Btn').disabled = !(validAge && profile.gender && profile.goal);
+  }
+
+  /* ── Location detect ── */
+  function detectLocation() {
+    var status = document.getElementById('locStatus');
+    if (!navigator.geolocation) { status.textContent = 'Not supported — type your city below'; return; }
+    status.textContent = 'Detecting...';
+    navigator.geolocation.getCurrentPosition(
+      function (pos) {
+        fetch('https://nominatim.openstreetmap.org/reverse?lat='
+          + pos.coords.latitude + '&lon=' + pos.coords.longitude + '&format=json')
+          .then(function(r){ return r.json(); })
+          .then(function(d){
+            var city = (d.address && (d.address.city || d.address.town || d.address.village)) || '';
+            if (city) {
+              document.getElementById('cityInp').value = city;
+              document.getElementById('step3Btn').disabled = false;
+              status.textContent = '📍 Found: ' + city;
+              if(window.Apptics) Apptics.track('location_detected','onboarding',{});
+            } else {
+              status.textContent = 'Could not detect — type below';
+            }
+          })
+          .catch(function(){ status.textContent = 'Could not detect — type below'; });
+      },
+      function(){ status.textContent = 'Permission denied — type your city below'; }
+    );
+  }
+
+  /* ── Step navigation ── */
+  function goStep(n) {
+    /* Collect data from current step */
+    if (currentStep === 1) profile.name = document.getElementById('nameInp').value.trim();
+    if (currentStep === 2) profile.age  = document.getElementById('ageInp').value;
+    if (currentStep === 3) {
+      profile.city = document.getElementById('cityInp').value.trim() || 'Bangalore';
+      buildSummary();
+      saveProfile();
+    }
+
+    /* Hide current, show next */
+    document.getElementById('step' + currentStep).style.display = 'none';
+    document.getElementById('step' + n).style.display = 'block';
+    currentStep = n;
+    updateNav(n);
+
+    if(window.Apptics) Apptics.track('ob_step_' + n, 'onboarding', {});
+  }
+
+  function updateNav(n) {
+    var fills  = { 1:'33%', 2:'66%', 3:'100%', 4:'100%' };
+    var labels = { 1:'Step 1 of 3', 2:'Step 2 of 3', 3:'Step 3 of 3', 4:'Almost there!' };
+    document.getElementById('obProgress').style.width = fills[n];
+    document.getElementById('stepLabel').textContent  = labels[n];
+    [1,2,3].forEach(function(i){
+      var dot = document.getElementById('dot'+i);
+      var step = Math.min(n, 3);
+      dot.classList.toggle('active', i === step);
+      dot.classList.toggle('done',   i < step);
+    });
+  }
+
+  /* ── Build summary ── */
+  function buildSummary() {
+    var goalLabels   = { lose_fat:'Lose fat', build_muscle:'Build muscle', more_energy:'More energy', feel_healthy:'Feel healthier' };
+    var genderLabels = { male:'Male', female:'Female', prefer_not:'Prefer not to say' };
+    var rows = [
+      ['Name',         profile.name],
+      ['Age',          profile.age + ' years'],
+      ['Sex',          genderLabels[profile.gender] || '—'],
+      ['Primary goal', goalLabels[profile.goal]     || '—'],
+      ['City',         profile.city]
+    ];
+    document.getElementById('summaryCard').innerHTML = rows.map(function(r){
+      return '<div class="summary-row"><span class="summary-key">' + r[0]
+           + '</span><span class="summary-val">' + r[1] + '</span></div>';
+    }).join('');
+  }
+
+  /* ── Save to localStorage + Catalyst ── */
+  function saveProfile() {
+    profile.created_at = new Date().toISOString();
+    LyfProfile.save(profile);
+    localStorage.setItem('lyf_onboarded', '1');
+    LyfCatalyst.saveProfile(profile);
+    if(window.Apptics) Apptics.track('onboarding_complete','onboarding', { goal: profile.goal, city: profile.city });
+  }
+
+  /* ── Enter app ── */
+  function enterApp() {
+    window.location.href = 'dashboard.html';
+  }
+</script>
+</body>
+</html>

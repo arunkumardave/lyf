@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lyf — Connection & Tribe</title>
+  <script>(function(){var DK='lyf_device_id',VK='lyf_device_seen',did=null,isNew=false;try{did=localStorage.getItem(DK);if(!did){did='lyf-'+Date.now()+'-'+Math.random().toString(36).substr(2,9);localStorage.setItem(DK,did);}isNew=!localStorage.getItem(VK);localStorage.setItem(VK,'1');}catch(e){did='lyf-mem-'+Date.now();isNew=true;}window.__lyfDeviceId=did;window.__lyfIsNewDevice=isNew;})();</script>
+  <script type="text/javascript" id="zohoapptics">var d=document,s=d.createElement("script");s.type="text/javascript";s.id="zohoappticsscript";s.defer=!0;s.src="https://apptics.zoho.in/sdk/web/v1/60070142391/315000000002032/init?aaID=315000000003007";var t=d.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t);window.appticsReady=function(s){var e=window.apptics__asyncalls=window.apptics__asyncalls||[];window.appticsReadyStatus?(s&&e.push(s),e.forEach(s=>s&&s()),window.apptics__asyncalls=null):s&&e.push(s)};</script>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+</head>
+<body>
+<nav class="topnav">
+  <div class="nav-logo" id="lyfLogo">L<span>y</span>f</div>
+  <div class="nav-right">
+    <div class="vitality-badge">✦ <span id="vitalityBadge">30</span> Vitality</div>
+    <div class="theme-btn" id="themeBtn" onclick="toggleTheme()">🌙</div>
+    <div class="nav-avatar" id="navAvatar">A</div>
+  </div>
+</nav>
+<div class="app-layout">
+  <aside class="sidebar">
+    <div class="sb-profile"><div class="sb-profile-top"><div class="sb-av" id="sbAvatar">A</div><div><div class="sb-name" id="sbName">Loading...</div><div class="sb-city" id="sbCity">📍 Bangalore</div></div></div><div class="sb-goal-pill" id="sbGoal"><div class="sb-goal-dot"></div><span class="sb-goal-label">Goal</span></div></div>
+    <div class="sb-score-section"><div><div class="sb-score-num" id="sbScore">30</div><div class="sb-score-label">Vitality score</div></div><div class="vitality-ring" style="width:52px;height:52px"><svg width="52" height="52" viewBox="0 0 52 52"><circle cx="26" cy="26" r="20" fill="none" stroke="var(--border)" stroke-width="5"/><circle cx="26" cy="26" r="20" fill="none" stroke="var(--accent)" stroke-width="5" stroke-dasharray="125.6" id="vitalityRingFill" stroke-dashoffset="87.9" stroke-linecap="round" style="transform:rotate(-90deg);transform-origin:26px 26px"/></svg><div class="vitality-ring-pct" id="vitalityRingPct">30%</div></div></div>
+    <div class="sb-bars">
+      <div class="sb-bar-row" onclick="highlightPillar(this)"><span class="sb-bar-icon">💪</span><span class="sb-bar-name">Fitness</span><div class="sb-bar-track"><div class="sb-bar-fill" id="sbBarFitness" style="width:0%;background:var(--fitness)"></div></div><span class="sb-bar-pts" id="sbPtsFitness" style="color:var(--fitness)">0</span></div>
+      <div class="sb-bar-row" onclick="highlightPillar(this)"><span class="sb-bar-icon">🧠</span><span class="sb-bar-name">Mind</span><div class="sb-bar-track"><div class="sb-bar-fill" id="sbBarMind" style="width:0%;background:var(--mind)"></div></div><span class="sb-bar-pts" id="sbPtsMind" style="color:var(--mind)">0</span></div>
+      <div class="sb-bar-row" onclick="highlightPillar(this)"><span class="sb-bar-icon">☀️</span><span class="sb-bar-name">Joy</span><div class="sb-bar-track"><div class="sb-bar-fill" id="sbBarJoy" style="width:0%;background:var(--joy)"></div></div><span class="sb-bar-pts" id="sbPtsJoy" style="color:var(--joy)">0</span></div>
+      <div class="sb-bar-row" onclick="highlightPillar(this)"><span class="sb-bar-icon">🌿</span><span class="sb-bar-name">Nature</span><div class="sb-bar-track"><div class="sb-bar-fill" id="sbBarNature" style="width:0%;background:var(--nature)"></div></div><span class="sb-bar-pts" id="sbPtsNature" style="color:var(--nature)">0</span></div>
+      <div class="sb-bar-row active" onclick="highlightPillar(this)"><span class="sb-bar-icon">👥</span><span class="sb-bar-name">Connect</span><div class="sb-bar-track"><div class="sb-bar-fill" id="sbBarConnect" style="width:0%;background:var(--connect)"></div></div><span class="sb-bar-pts" id="sbPtsConnect" style="color:var(--connect)">0</span></div>
+    </div>
+    <nav class="sb-nav">
+      <a href="dashboard.html" class="sb-nav-item"><div class="sb-nav-icon">🏠</div><div><div class="sb-nav-title">Home</div></div></a>
+      <a href="fitness.html"   class="sb-nav-item"><div class="sb-nav-icon">💪</div><div><div class="sb-nav-title">Fitness &amp; Body</div></div></a>
+      <a href="mind.html"      class="sb-nav-item"><div class="sb-nav-icon">🧠</div><div><div class="sb-nav-title">Mind &amp; Wellness</div></div></a>
+      <a href="happiness.html" class="sb-nav-item"><div class="sb-nav-icon">☀️</div><div><div class="sb-nav-title">Happiness &amp; Joy</div></div></a>
+      <a href="nature.html"    class="sb-nav-item"><div class="sb-nav-icon">🌿</div><div><div class="sb-nav-title">Nature &amp; Escape</div></div></a>
+      <a href="connect.html"   class="sb-nav-item active"><div class="sb-nav-icon" style="background:var(--connect-lt);border-color:var(--connect-br)">👥</div><div><div class="sb-nav-title">Connection</div><div class="sb-nav-sub">Social health · Groups</div></div></a>
+      <div class="sb-nav-divider"></div>
+      <a href="settings.html"  class="sb-nav-item"><div class="sb-nav-icon">⚙️</div><div><div class="sb-nav-title">Settings</div></div></a>
+    </nav>
+    <div class="sb-footer"><span class="sb-streak-icon">🔥</span><div><div class="sb-streak-label">5 day streak</div><div class="sb-streak-sub">Keep it going</div></div><div class="streak-dots streak-dots-container" style="margin-left:auto"></div></div>
+  </aside>
+
+  <main class="main-content">
+    <div class="page-title" style="color:var(--connect)">Connection &amp; Tribe</div>
+    <div class="page-sub">Humans heal in community. Who fills your energy?</div>
+
+    <!-- Nudge banner -->
+    <div class="banner banner-red">
+      <span class="banner-icon">👥</span>
+      <div>
+        <div class="eyebrow" style="color:var(--connect);margin-bottom:3px">Today's nudge</div>
+        <div style="color:var(--text);font-size:13px;line-height:1.6" id="nudgeText">"Text someone you haven't spoken to in a month. A simple 'thinking of you' boosts both people's mood for hours."</div>
+      </div>
+    </div>
+
+    <div class="grid-2 mb-grid">
+      <div>
+        <!-- Nudge done -->
+        <div class="card mb-grid flex items-center gap-12">
+          <span style="font-size:22px">💬</span>
+          <div style="flex:1"><div style="font-size:14px;font-weight:700;color:var(--text)">Did you act on today's nudge?</div><div style="font-size:12px;color:var(--muted)">Reaching out to someone counts as a connection</div></div>
+          <button class="btn btn-sm" id="nudgeBtn" onclick="logNudge()" style="background:var(--connect-lt);color:var(--connect-dk);border:1px solid var(--connect-br)">Log it ✓</button>
+        </div>
+
+        <!-- Connection slider -->
+        <div class="sec-label">How connected do you feel?</div>
+        <div class="card mb-grid">
+          <div class="flex justify-between mb-8" style="font-size:12px;color:var(--muted)"><span>Very isolated</span><span>Deeply loved</span></div>
+          <input type="range" min="1" max="5" value="3" id="connectionSlider" style="width:100%;accent-color:var(--connect)" oninput="updateSlider(this.value)">
+          <div style="text-align:center;font-size:13px;color:var(--connect);font-weight:700;margin-top:8px" id="sliderLabel">It's okay</div>
+        </div>
+
+        <!-- Stats -->
+        <div class="grid-2 mb-grid">
+          <div class="stat-card">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <div class="stat-val" style="color:var(--connect)" id="socialCount">0</div>
+              <button onclick="increment('social')" style="width:28px;height:28px;border-radius:50%;background:var(--connect-lt);border:1px solid var(--connect-br);cursor:pointer;font-size:16px;color:var(--connect-dk)">+</button>
+            </div>
+            <div class="stat-label">Connections this week</div>
+          </div>
+          <div class="stat-card">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <div class="stat-val" style="color:var(--joy)" id="mealSocialCount">0</div>
+              <button onclick="increment('meal')" style="width:28px;height:28px;border-radius:50%;background:var(--joy-lt);border:1px solid var(--joy-br);cursor:pointer;font-size:16px;color:var(--joy-dk)">+</button>
+            </div>
+            <div class="stat-label">Meals with others</div>
+          </div>
+        </div>
+
+        <!-- Wisdom -->
+        <div class="wisdom-card">🏘️ &ldquo;In every village, people eat together. The shared meal is not just food — it is belonging, trust, and healing. Eating alone regularly is one of the most underrated sources of modern loneliness.&rdquo;</div>
+      </div>
+
+      <div>
+        <div class="sec-label">Groups near you · <span id="groupCity">Bangalore</span></div>
+        <div id="groupsList"></div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div class="modal-overlay" id="creditsModal" onclick="if(event.target===this)closeCredits()"><div class="modal-box" style="text-align:center"><div class="credits-avatar">👨‍💻</div><div style="font-size:20px;font-weight:800;color:var(--text);margin-bottom:16px">Arun Kumar Dave</div><div class="credits-divider"></div><div style="font-size:13px;color:var(--muted);font-style:italic;line-height:1.6;margin-bottom:16px">"Building things that matter."</div><span style="font-size:13px;color:var(--muted);cursor:pointer;text-decoration:underline" onclick="closeCredits()">Close</span></div></div>
+
+<script src="js/apptics.js"></script>
+<script src="js/profile.js"></script>
+<script src="js/vitality.js"></script>
+<script src="js/app.js"></script>
+<script>
+var socialCount = 0, mealCount = 0;
+
+document.addEventListener('DOMContentLoaded', function(){
+  var today = new Date().toDateString();
+  var profile = LyfProfile.get();
+  document.getElementById('groupCity').textContent = profile.city || 'Bangalore';
+
+  /* Nudge done state */
+  if(localStorage.getItem('lyf_nudge_' + today)){
+    var btn = document.getElementById('nudgeBtn');
+    btn.textContent = 'Logged ✓'; btn.disabled = true; btn.style.opacity = '.6';
+  }
+
+  /* Counts */
+  socialCount = parseInt(localStorage.getItem('lyf_social_count_' + today) || '0', 10);
+  mealCount   = parseInt(localStorage.getItem('lyf_meal_count_' + today)   || '0', 10);
+  document.getElementById('socialCount').textContent  = socialCount;
+  document.getElementById('mealSocialCount').textContent = mealCount;
+
+  /* Groups */
+  var groups = [
+    {icon:'🏃', name:'Bangalore Runners Club',   detail:'Sunday 6am · Cubbon Park'},
+    {icon:'🧘', name:'Morning Yoga Collective',  detail:'Daily 7am · Indiranagar'},
+    {icon:'🥾', name:'Weekend Trek Group',        detail:'Bi-weekly · Various trails'},
+    {icon:'🎨', name:'Sunday Art Circle',         detail:'Sunday 9am · Koramangala'},
+    {icon:'🚴', name:'Bangalore Cycling Club',    detail:'Saturday 6am · Ulsoor Lake'}
+  ];
+  var gl = document.getElementById('groupsList');
+  groups.forEach(function(g){
+    var item = document.createElement('div');
+    item.className = 'spot-item';
+    item.innerHTML = '<div class="spot-icon">' + g.icon + '</div>'
+      + '<div><div class="spot-name">' + g.name + '</div><div class="spot-dist">' + g.detail + '</div></div>';
+    item.onclick = function(){ if(window.Apptics) Apptics.track('group_tapped','connect',{ group: g.name }); };
+    gl.appendChild(item);
+  });
+});
+
+function logNudge(){
+  var today = new Date().toDateString();
+  localStorage.setItem('lyf_nudge_' + today, '1');
+  LyfVitality.persist();
+  var btn = document.getElementById('nudgeBtn');
+  btn.textContent = 'Logged ✓'; btn.disabled = true; btn.style.opacity = '.6';
+  if(window.Apptics) Apptics.track('nudge_acted','connect',{});
+}
+
+function increment(type){
+  var today = new Date().toDateString();
+  if(type === 'social'){
+    socialCount++;
+    localStorage.setItem('lyf_social_count_' + today, socialCount);
+    localStorage.setItem('lyf_social_' + today, '1');
+    document.getElementById('socialCount').textContent = socialCount;
+    if(window.Apptics) Apptics.track('social_logged','connect',{ count: socialCount });
+  } else {
+    mealCount++;
+    localStorage.setItem('lyf_meal_count_' + today, mealCount);
+    localStorage.setItem('lyf_mealsocial_' + today, '1');
+    document.getElementById('mealSocialCount').textContent = mealCount;
+    if(window.Apptics) Apptics.track('meal_social_logged','connect',{ count: mealCount });
+  }
+  LyfVitality.persist();
+}
+
+var sliderLabels = ['','Very isolated','Somewhat lonely','It\'s okay','Fairly connected','Deeply connected'];
+function updateSlider(val){
+  document.getElementById('sliderLabel').textContent = sliderLabels[parseInt(val,10)];
+}
+
+window.highlightPillar = function(el){ document.querySelectorAll('.sb-bar-row').forEach(function(r){ r.classList.remove('active'); }); el.classList.add('active'); };
+</script>
+</body>
+</html>

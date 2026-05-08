@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lyf — Happiness & Joy</title>
+  <script>(function(){var DK='lyf_device_id',VK='lyf_device_seen',did=null,isNew=false;try{did=localStorage.getItem(DK);if(!did){did='lyf-'+Date.now()+'-'+Math.random().toString(36).substr(2,9);localStorage.setItem(DK,did);}isNew=!localStorage.getItem(VK);localStorage.setItem(VK,'1');}catch(e){did='lyf-mem-'+Date.now();isNew=true;}window.__lyfDeviceId=did;window.__lyfIsNewDevice=isNew;})();</script>
+  <script type="text/javascript" id="zohoapptics">var d=document,s=d.createElement("script");s.type="text/javascript";s.id="zohoappticsscript";s.defer=!0;s.src="https://apptics.zoho.in/sdk/web/v1/60070142391/315000000002032/init?aaID=315000000003007";var t=d.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t);window.appticsReady=function(s){var e=window.apptics__asyncalls=window.apptics__asyncalls||[];window.appticsReadyStatus?(s&&e.push(s),e.forEach(s=>s&&s()),window.apptics__asyncalls=null):s&&e.push(s)};</script>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+</head>
+<body>
+<nav class="topnav">
+  <div class="nav-logo" id="lyfLogo">L<span>y</span>f</div>
+  <div class="nav-right">
+    <div class="vitality-badge">✦ <span id="vitalityBadge">30</span> Vitality</div>
+    <div class="theme-btn" id="themeBtn" onclick="toggleTheme()">🌙</div>
+    <div class="nav-avatar" id="navAvatar">A</div>
+  </div>
+</nav>
+<div class="app-layout">
+  <aside class="sidebar">
+    <div class="sb-profile"><div class="sb-profile-top"><div class="sb-av" id="sbAvatar">A</div><div><div class="sb-name" id="sbName">Loading...</div><div class="sb-city" id="sbCity">📍 Bangalore</div></div></div><div class="sb-goal-pill" id="sbGoal"><div class="sb-goal-dot"></div><span class="sb-goal-label">Goal</span></div></div>
+    <div class="sb-score-section"><div><div class="sb-score-num" id="sbScore">30</div><div class="sb-score-label">Vitality score</div></div><div class="vitality-ring" style="width:52px;height:52px"><svg width="52" height="52" viewBox="0 0 52 52"><circle cx="26" cy="26" r="20" fill="none" stroke="var(--border)" stroke-width="5"/><circle cx="26" cy="26" r="20" fill="none" stroke="var(--accent)" stroke-width="5" stroke-dasharray="125.6" id="vitalityRingFill" stroke-dashoffset="87.9" stroke-linecap="round" style="transform:rotate(-90deg);transform-origin:26px 26px"/></svg><div class="vitality-ring-pct" id="vitalityRingPct">30%</div></div></div>
+    <div class="sb-bars">
+      <div class="sb-bar-row" onclick="highlightPillar(this)"><span class="sb-bar-icon">💪</span><span class="sb-bar-name">Fitness</span><div class="sb-bar-track"><div class="sb-bar-fill" id="sbBarFitness" style="width:0%;background:var(--fitness)"></div></div><span class="sb-bar-pts" id="sbPtsFitness" style="color:var(--fitness)">0</span></div>
+      <div class="sb-bar-row" onclick="highlightPillar(this)"><span class="sb-bar-icon">🧠</span><span class="sb-bar-name">Mind</span><div class="sb-bar-track"><div class="sb-bar-fill" id="sbBarMind" style="width:0%;background:var(--mind)"></div></div><span class="sb-bar-pts" id="sbPtsMind" style="color:var(--mind)">0</span></div>
+      <div class="sb-bar-row active" onclick="highlightPillar(this)"><span class="sb-bar-icon">☀️</span><span class="sb-bar-name">Joy</span><div class="sb-bar-track"><div class="sb-bar-fill" id="sbBarJoy" style="width:0%;background:var(--joy)"></div></div><span class="sb-bar-pts" id="sbPtsJoy" style="color:var(--joy)">0</span></div>
+      <div class="sb-bar-row" onclick="highlightPillar(this)"><span class="sb-bar-icon">🌿</span><span class="sb-bar-name">Nature</span><div class="sb-bar-track"><div class="sb-bar-fill" id="sbBarNature" style="width:0%;background:var(--nature)"></div></div><span class="sb-bar-pts" id="sbPtsNature" style="color:var(--nature)">0</span></div>
+      <div class="sb-bar-row" onclick="highlightPillar(this)"><span class="sb-bar-icon">👥</span><span class="sb-bar-name">Connect</span><div class="sb-bar-track"><div class="sb-bar-fill" id="sbBarConnect" style="width:0%;background:var(--connect)"></div></div><span class="sb-bar-pts" id="sbPtsConnect" style="color:var(--connect)">0</span></div>
+    </div>
+    <nav class="sb-nav">
+      <a href="dashboard.html" class="sb-nav-item"><div class="sb-nav-icon">🏠</div><div><div class="sb-nav-title">Home</div></div></a>
+      <a href="fitness.html"   class="sb-nav-item"><div class="sb-nav-icon">💪</div><div><div class="sb-nav-title">Fitness &amp; Body</div></div></a>
+      <a href="mind.html"      class="sb-nav-item"><div class="sb-nav-icon">🧠</div><div><div class="sb-nav-title">Mind &amp; Wellness</div></div></a>
+      <a href="happiness.html" class="sb-nav-item active"><div class="sb-nav-icon" style="background:var(--joy-lt);border-color:var(--joy-br)">☀️</div><div><div class="sb-nav-title">Happiness &amp; Joy</div><div class="sb-nav-sub">Gratitude · Joy log</div></div></a>
+      <a href="nature.html"    class="sb-nav-item"><div class="sb-nav-icon">🌿</div><div><div class="sb-nav-title">Nature &amp; Escape</div></div></a>
+      <a href="connect.html"   class="sb-nav-item"><div class="sb-nav-icon">👥</div><div><div class="sb-nav-title">Connection</div></div></a>
+      <div class="sb-nav-divider"></div>
+      <a href="settings.html"  class="sb-nav-item"><div class="sb-nav-icon">⚙️</div><div><div class="sb-nav-title">Settings</div></div></a>
+    </nav>
+    <div class="sb-footer"><span class="sb-streak-icon">🔥</span><div><div class="sb-streak-label">5 day streak</div><div class="sb-streak-sub">Keep it going</div></div><div class="streak-dots streak-dots-container" style="margin-left:auto"></div></div>
+  </aside>
+
+  <main class="main-content">
+    <div class="page-title" style="color:var(--joy)">Happiness &amp; Joy</div>
+    <div class="page-sub">When did you last feel truly alive?</div>
+
+    <div class="grid-2 mb-grid">
+      <div>
+        <!-- Joy selector -->
+        <div class="sec-label">What brought you joy today?</div>
+        <div class="grid-3 mb-grid" id="joyGrid"></div>
+
+        <!-- Gratitude -->
+        <div class="sec-label">Gratitude log</div>
+        <div class="card mb-grid">
+          <div style="font-size:13px;color:var(--muted);margin-bottom:10px">🙏 One thing you're grateful for today</div>
+          <input class="input" id="gratitudeInp" placeholder="e.g. A quiet morning cup of chai...">
+          <button class="btn btn-primary btn-sm" style="margin-top:8px;width:100%" onclick="saveGratitude()">Save</button>
+        </div>
+
+        <!-- Detox challenge -->
+        <div class="sec-label">Digital detox challenge</div>
+        <div class="card">
+          <div style="font-size:15px;font-weight:800;color:var(--text);margin-bottom:4px">One phone-free meal today</div>
+          <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:12px">Just you, the food, and the moment. No scrolling.</div>
+          <div class="flex items-center gap-10" style="cursor:pointer" onclick="toggleDetox(this)">
+            <div id="detoxCheck" style="width:18px;height:18px;border-radius:5px;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;transition:all .2s"></div>
+            <div style="font-size:13px;color:var(--muted)" id="detoxLabel">Mark as done</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <!-- Plan ahead -->
+        <div class="sec-label">Plan something to look forward to</div>
+        <div class="banner banner-amber" style="flex-direction:column;align-items:stretch;margin-bottom:14px">
+          <div style="font-size:14px;color:var(--text);line-height:1.6;margin-bottom:12px">Anticipation of a positive event boosts mood for days <strong style="color:var(--joy)">before</strong> it even happens.</div>
+          <div class="flex gap-8" style="flex-wrap:wrap" id="planOptions"></div>
+        </div>
+
+        <!-- Village wisdom -->
+        <div class="sec-label">Village wisdom</div>
+        <div class="wisdom-card">🌾 &ldquo;In most traditional cultures, joy was not pursued — it was a byproduct of purposeful living, communal meals, and seasonal rhythms. The modern chase for happiness is itself the problem.&rdquo;</div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div class="modal-overlay" id="creditsModal" onclick="if(event.target===this)closeCredits()"><div class="modal-box" style="text-align:center"><div class="credits-avatar">👨‍💻</div><div style="font-size:20px;font-weight:800;color:var(--text);margin-bottom:16px">Arun Kumar Dave</div><div class="credits-divider"></div><div style="font-size:13px;color:var(--muted);font-style:italic;line-height:1.6;margin-bottom:16px">"Building things that matter — one line of code, one life at a time."</div><span style="font-size:13px;color:var(--muted);cursor:pointer;text-decoration:underline" onclick="closeCredits()">Close</span></div></div>
+
+<script src="js/apptics.js"></script>
+<script src="js/profile.js"></script>
+<script src="js/vitality.js"></script>
+<script src="js/app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  var today = new Date().toDateString();
+  var savedJoy = LyfProfile.getDailyLog('lyf_joy');
+
+  /* Joy grid */
+  var joys = [
+    {id:'food',     em:'🍽️', label:'Food'},
+    {id:'music',    em:'🎵', label:'Music'},
+    {id:'travel',   em:'✈️', label:'Travel'},
+    {id:'nature',   em:'🌿', label:'Nature'},
+    {id:'creating', em:'🎨', label:'Creating'},
+    {id:'reading',  em:'📚', label:'Reading'}
+  ];
+  var jg = document.getElementById('joyGrid');
+  joys.forEach(function(j){
+    var btn = document.createElement('div');
+    btn.className = 'mood-btn' + (savedJoy[j.id] ? ' active' : '');
+    btn.style.setProperty('--mood-active-border', 'var(--joy)');
+    btn.innerHTML = '<div class="mood-em">' + j.em + '</div><div class="mood-label">' + j.label + '</div>';
+    btn.onclick = function(){
+      btn.classList.toggle('active');
+      if(btn.classList.contains('active')){
+        btn.style.borderColor = 'var(--joy)'; btn.style.background = 'var(--joy-lt)';
+        btn.querySelector('.mood-label').style.color = 'var(--joy)';
+      } else {
+        btn.style.borderColor = ''; btn.style.background = '';
+        btn.querySelector('.mood-label').style.color = '';
+      }
+      savedJoy[j.id] = btn.classList.contains('active');
+      LyfProfile.saveDailyLog('lyf_joy', savedJoy);
+      LyfVitality.persist();
+      if(window.Apptics) Apptics.track('joy_logged','happiness',{ joy: j.id });
+    };
+    if(savedJoy[j.id]){ btn.style.borderColor='var(--joy)'; btn.style.background='var(--joy-lt)'; btn.querySelector('.mood-label').style.color='var(--joy)'; }
+    jg.appendChild(btn);
+  });
+
+  /* Gratitude */
+  var savedGrat = localStorage.getItem('lyf_gratitude_' + today) || '';
+  if(savedGrat) document.getElementById('gratitudeInp').value = savedGrat;
+
+  /* Detox */
+  var detoxDone = localStorage.getItem('lyf_detox_' + today) === '1';
+  if(detoxDone){ document.getElementById('detoxCheck').style.background='var(--accent)'; document.getElementById('detoxCheck').textContent='✓'; document.getElementById('detoxLabel').textContent='Done ✓'; }
+
+  /* Plan options */
+  var plans = ['Nature walk','Meet a friend','Cook something new','Weekend trip','Watch a sunrise','Read a new book'];
+  var po = document.getElementById('planOptions');
+  plans.forEach(function(p){
+    var btn = document.createElement('button');
+    btn.className = 'btn btn-secondary btn-sm';
+    btn.textContent = p;
+    btn.onclick = function(){
+      localStorage.setItem('lyf_plan_' + today, p);
+      btn.style.background = 'var(--joy-lt)'; btn.style.borderColor = 'var(--joy)'; btn.style.color = 'var(--joy-dk)';
+      LyfVitality.persist();
+      if(window.Apptics) Apptics.track('plan_added','happiness',{ plan: p });
+    };
+    po.appendChild(btn);
+  });
+});
+
+function saveGratitude(){
+  var text = document.getElementById('gratitudeInp').value.trim();
+  if(!text) return;
+  localStorage.setItem('lyf_gratitude_' + new Date().toDateString(), text);
+  LyfVitality.persist();
+  var btn = document.querySelector('[onclick="saveGratitude()"]');
+  btn.textContent = 'Saved ✓'; btn.disabled = true;
+  setTimeout(function(){ btn.textContent = 'Save'; btn.disabled = false; }, 2000);
+  if(window.Apptics) Apptics.track('gratitude_saved','happiness',{});
+}
+
+function toggleDetox(el){
+  var done = !localStorage.getItem('lyf_detox_' + new Date().toDateString());
+  localStorage.setItem('lyf_detox_' + new Date().toDateString(), done ? '1' : '');
+  document.getElementById('detoxCheck').style.background = done ? 'var(--accent)' : '';
+  document.getElementById('detoxCheck').textContent = done ? '✓' : '';
+  document.getElementById('detoxLabel').textContent = done ? 'Done ✓' : 'Mark as done';
+  LyfVitality.persist();
+  if(window.Apptics) Apptics.track('detox_challenge','happiness',{ done: done });
+}
+
+window.highlightPillar = function(el){ document.querySelectorAll('.sb-bar-row').forEach(function(r){ r.classList.remove('active'); }); el.classList.add('active'); };
+</script>
+</body>
+</html>

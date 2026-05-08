@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lyf — Home</title>
+  <script>
+    (function(){
+      var DK='lyf_device_id',VK='lyf_device_seen',did=null,isNew=false;
+      try{did=localStorage.getItem(DK);if(!did){did='lyf-'+Date.now()+'-'+Math.random().toString(36).substr(2,9);localStorage.setItem(DK,did);}isNew=!localStorage.getItem(VK);localStorage.setItem(VK,'1');}catch(e){did='lyf-mem-'+Date.now();isNew=true;}
+      window.__lyfDeviceId=did;window.__lyfIsNewDevice=isNew;
+    })();
+  </script>
+  <script type="text/javascript" id="zohoapptics">var d=document,s=d.createElement("script");s.type="text/javascript";s.id="zohoappticsscript";s.defer=!0;s.src="https://apptics.zoho.in/sdk/web/v1/60070142391/315000000002032/init?aaID=315000000003007";var t=d.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t);window.appticsReady=function(s){var e=window.apptics__asyncalls=window.apptics__asyncalls||[];window.appticsReadyStatus?(s&&e.push(s),e.forEach(s=>s&&s()),window.apptics__asyncalls=null):s&&e.push(s)};</script>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="nav-logo" id="lyfLogo">L<span>y</span>f</div>
+  <div class="nav-right">
+    <div class="vitality-badge">✦ <span id="vitalityBadge">30</span> Vitality</div>
+    <div class="theme-btn" id="themeBtn" onclick="toggleTheme()">🌙</div>
+    <div class="nav-avatar" id="navAvatar">A</div>
+  </div>
+</nav>
+
+<div class="app-layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sb-profile">
+      <div class="sb-profile-top">
+        <div class="sb-av" id="sbAvatar">A</div>
+        <div>
+          <div class="sb-name" id="sbName">Loading...</div>
+          <div class="sb-city" id="sbCity">📍 Bangalore</div>
+        </div>
+      </div>
+      <div class="sb-goal-pill" id="sbGoal">
+        <div class="sb-goal-dot"></div>
+        <span class="sb-goal-label">Goal: Feel healthier</span>
+      </div>
+    </div>
+
+    <div class="sb-score-section">
+      <div>
+        <div class="sb-score-num" id="sbScore">30</div>
+        <div class="sb-score-label">Vitality score · out of 100</div>
+      </div>
+      <div class="vitality-ring" style="width:52px;height:52px">
+        <svg width="52" height="52" viewBox="0 0 52 52">
+          <circle cx="26" cy="26" r="20" fill="none" stroke="var(--border)" stroke-width="5"/>
+          <circle cx="26" cy="26" r="20" fill="none" stroke="var(--accent)" stroke-width="5"
+            stroke-dasharray="125.6" id="vitalityRingFill" stroke-dashoffset="87.9"
+            stroke-linecap="round" style="transform:rotate(-90deg);transform-origin:26px 26px"/>
+        </svg>
+        <div class="vitality-ring-pct" id="vitalityRingPct">30%</div>
+      </div>
+    </div>
+
+    <div class="sb-bars">
+      <div class="sb-bar-row active" onclick="highlightPillar(this)">
+        <span class="sb-bar-icon">💪</span>
+        <span class="sb-bar-name">Fitness</span>
+        <div class="sb-bar-track"><div class="sb-bar-fill" id="sbBarFitness" style="width:0%;background:var(--fitness)"></div></div>
+        <span class="sb-bar-pts" id="sbPtsFitness" style="color:var(--fitness)">0</span>
+      </div>
+      <div class="sb-bar-row" onclick="highlightPillar(this)">
+        <span class="sb-bar-icon">🧠</span>
+        <span class="sb-bar-name">Mind</span>
+        <div class="sb-bar-track"><div class="sb-bar-fill" id="sbBarMind" style="width:0%;background:var(--mind)"></div></div>
+        <span class="sb-bar-pts" id="sbPtsMind" style="color:var(--mind)">0</span>
+      </div>
+      <div class="sb-bar-row" onclick="highlightPillar(this)">
+        <span class="sb-bar-icon">☀️</span>
+        <span class="sb-bar-name">Joy</span>
+        <div class="sb-bar-track"><div class="sb-bar-fill" id="sbBarJoy" style="width:0%;background:var(--joy)"></div></div>
+        <span class="sb-bar-pts" id="sbPtsJoy" style="color:var(--joy)">0</span>
+      </div>
+      <div class="sb-bar-row" onclick="highlightPillar(this)">
+        <span class="sb-bar-icon">🌿</span>
+        <span class="sb-bar-name">Nature</span>
+        <div class="sb-bar-track"><div class="sb-bar-fill" id="sbBarNature" style="width:0%;background:var(--nature)"></div></div>
+        <span class="sb-bar-pts" id="sbPtsNature" style="color:var(--nature)">0</span>
+      </div>
+      <div class="sb-bar-row" onclick="highlightPillar(this)">
+        <span class="sb-bar-icon">👥</span>
+        <span class="sb-bar-name">Connect</span>
+        <div class="sb-bar-track"><div class="sb-bar-fill" id="sbBarConnect" style="width:0%;background:var(--connect)"></div></div>
+        <span class="sb-bar-pts" id="sbPtsConnect" style="color:var(--connect)">0</span>
+      </div>
+    </div>
+
+    <nav class="sb-nav">
+      <a href="dashboard.html" class="sb-nav-item active">
+        <div class="sb-nav-icon" style="background:var(--accentlt);border-color:var(--border2)">🏠</div>
+        <div><div class="sb-nav-title">Home</div><div class="sb-nav-sub">Dashboard &amp; overview</div></div>
+      </a>
+      <a href="fitness.html" class="sb-nav-item">
+        <div class="sb-nav-icon">💪</div>
+        <div><div class="sb-nav-title">Fitness &amp; Body</div><div class="sb-nav-sub">Workouts · Nutrition · Stats</div></div>
+        <span class="sb-nav-badge" style="background:var(--accentlt);color:var(--accentdk)" id="workoutBadge">Today</span>
+      </a>
+      <a href="mind.html" class="sb-nav-item">
+        <div class="sb-nav-icon">🧠</div>
+        <div><div class="sb-nav-title">Mind &amp; Wellness</div><div class="sb-nav-sub">Mood · Sleep · Books</div></div>
+      </a>
+      <a href="happiness.html" class="sb-nav-item">
+        <div class="sb-nav-icon">☀️</div>
+        <div><div class="sb-nav-title">Happiness &amp; Joy</div><div class="sb-nav-sub">Gratitude · Joy log</div></div>
+      </a>
+      <a href="nature.html" class="sb-nav-item">
+        <div class="sb-nav-icon">🌿</div>
+        <div><div class="sb-nav-title">Nature &amp; Escape</div><div class="sb-nav-sub">Sun walk · Spots near you</div></div>
+        <span class="sb-nav-badge" style="background:var(--nature-lt);color:var(--nature)" id="sunBadge">6:45am</span>
+      </a>
+      <a href="connect.html" class="sb-nav-item">
+        <div class="sb-nav-icon">👥</div>
+        <div><div class="sb-nav-title">Connection</div><div class="sb-nav-sub">Social health · Groups</div></div>
+      </a>
+      <div class="sb-nav-divider"></div>
+      <a href="settings.html" class="sb-nav-item">
+        <div class="sb-nav-icon">⚙️</div>
+        <div><div class="sb-nav-title">Settings</div><div class="sb-nav-sub">Profile · AI · Preferences</div></div>
+      </a>
+    </nav>
+
+    <div class="sb-footer">
+      <span class="sb-streak-icon">🔥</span>
+      <div>
+        <div class="sb-streak-label">5 day streak</div>
+        <div class="sb-streak-sub">Keep it going today</div>
+      </div>
+      <div class="streak-dots streak-dots-container" style="margin-left:auto"></div>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main class="main-content">
+    <div class="page-title" id="greeting">Good morning 👋</div>
+    <div class="page-sub" id="subline">Loading...</div>
+
+    <!-- Sun window banner -->
+    <div class="banner banner-amber">
+      <span class="banner-icon">☀️</span>
+      <div style="color:var(--joy-dk)">Best sun window today: <strong>6:45–8:20am</strong> &nbsp;·&nbsp; <span id="sunCity">Bangalore</span> &nbsp;·&nbsp; UV index: Low · Walk without earphones</div>
+    </div>
+
+    <!-- Daily insight banner -->
+    <div class="banner banner-green">
+      <span class="banner-icon">🌱</span>
+      <div>
+        <div class="eyebrow" style="margin-bottom:3px">Today's insight</div>
+        <div style="color:var(--text);line-height:1.6;font-size:13px" id="dailyInsight">Loading...</div>
+      </div>
+    </div>
+
+    <!-- Goal banner -->
+    <div class="banner" id="goalBanner" style="background:var(--accentlt);border:1px solid var(--border2)">
+      <span class="banner-icon" id="goalIcon">🎯</span>
+      <div>
+        <div style="font-size:14px;font-weight:700;color:var(--accentdk)" id="goalText">Goal: Feel healthier</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:1px" id="goalSub">Your personalised plan is active</div>
+      </div>
+    </div>
+
+    <div class="grid-2 mb-grid">
+      <!-- Checklist -->
+      <div>
+        <div class="sec-label">Today's checklist</div>
+        <div id="checklist"></div>
+      </div>
+
+      <!-- Stats + water -->
+      <div>
+        <div class="sec-label">Quick stats</div>
+        <div class="grid-3" style="margin-bottom:12px" id="statsGrid"></div>
+        <div class="card" style="margin-bottom:0">
+          <div class="flex items-center justify-between mb-10">
+            <div style="font-size:13px;font-weight:600;color:var(--text)">💧 Water &nbsp;·&nbsp; 3.5L goal</div>
+            <div style="font-size:14px;font-weight:800;color:var(--sky)" id="waterCount">0 / 12</div>
+          </div>
+          <div class="water-glasses" id="waterGlasses"></div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="waterBar" style="width:0%;background:var(--sky)"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section cards -->
+    <div class="sec-label">Explore sections</div>
+    <div class="grid-3" id="sectionCards"></div>
+
+  </main>
+</div>
+
+<!-- Credits modal -->
+<div class="modal-overlay" id="creditsModal" onclick="if(event.target===this)closeCredits()">
+  <div class="modal-box" style="text-align:center">
+    <div class="credits-avatar">👨‍💻</div>
+    <div style="font-size:20px;font-weight:800;color:var(--text);margin-bottom:3px">Arun Kumar Dave</div>
+    <div style="font-size:12px;color:var(--muted);margin-bottom:2px">Senior Software Engineer · Zohocorp</div>
+    <div style="font-size:12px;color:var(--accent);font-weight:600;margin-bottom:16px">📍 Bangalore, India</div>
+    <div class="credits-divider"></div>
+    <div style="font-size:13px;color:var(--muted);font-style:italic;line-height:1.6;margin-bottom:14px">"Building things that matter — one line of code, one life at a time."</div>
+    <div style="font-size:11px;color:var(--border2);margin-bottom:16px">✦ Lyf was vibe coded by Arun ✦</div>
+    <div class="credits-socials">
+      <a href="https://linkedin.com/in/arun-kumar-dave" target="_blank" class="credits-soc">LinkedIn</a>
+      <a href="https://instagram.com/arunkumardave"      target="_blank" class="credits-soc">Instagram</a>
+      <a href="https://x.com/ArunKumarDave8"            target="_blank" class="credits-soc">X</a>
+      <a href="https://medium.com/@arunkumardave"        target="_blank" class="credits-soc">Medium</a>
+      <a href="https://topmate.io/arun_kumar_dave"       target="_blank" class="credits-soc">Topmate</a>
+      <a href="https://dev.to/arunkumardave"             target="_blank" class="credits-soc">Dev.to</a>
+    </div>
+    <span style="font-size:13px;color:var(--muted);cursor:pointer;text-decoration:underline" onclick="closeCredits()">Close</span>
+  </div>
+</div>
+
+<script src="js/apptics.js"></script>
+<script src="js/profile.js"></script>
+<script src="js/vitality.js"></script>
+<script src="js/app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var profile = LyfProfile.get();
+  var inbody  = LyfProfile.getInBody();
+  var today   = new Date().toDateString();
+
+  /* Sun city */
+  var sunCity = document.getElementById('sunCity');
+  if (sunCity) sunCity.textContent = profile.city || 'Bangalore';
+
+  /* Goal banner */
+  var goalData = {
+    lose_fat:     { icon:'🔥', text:'Goal: Lose fat',      sub:'Fat loss plan active — diet & cardio focused' },
+    build_muscle: { icon:'💪', text:'Goal: Build muscle',  sub:'Strength plan active — progressive overload' },
+    more_energy:  { icon:'⚡', text:'Goal: More energy',   sub:'Energy plan active — sleep, diet & movement' },
+    feel_healthy: { icon:'🫀', text:'Goal: Feel healthier',sub:'Wellness plan active — all five pillars balanced' }
+  };
+  var gd = goalData[profile.goal] || goalData['feel_healthy'];
+  document.getElementById('goalIcon').textContent = gd.icon;
+  document.getElementById('goalText').textContent = gd.text;
+  document.getElementById('goalSub').textContent  = gd.sub;
+
+  /* Stats grid */
+  var statsGrid = document.getElementById('statsGrid');
+  var stats = [
+    { val: inbody.weight   || '—', unit: inbody.weight   ? 'kg' : '', label:'Weight',   color:'var(--fitness)' },
+    { val: inbody.body_fat || '—', unit: inbody.body_fat ? '%'  : '', label:'Body fat', color:'var(--connect)' },
+    { val: inbody.inbody_score || '—', unit:'', label:'InBody',   color:'var(--joy)' }
+  ];
+  stats.forEach(function(s){
+    var card = document.createElement('div');
+    card.className = 'stat-card';
+    card.innerHTML = '<div class="stat-val" style="color:' + s.color + '">'
+      + s.val + '<span style="font-size:11px">' + s.unit + '</span></div>'
+      + '<div class="stat-label">' + s.label + '</div>'
+      + (s.val === '—' ? '<div style="font-size:10px;color:var(--muted);margin-top:3px">Add in Settings</div>' : '');
+    statsGrid.appendChild(card);
+  });
+
+  /* Checklist */
+  var checks = [
+    '2 glasses of water on waking',
+    'Logged today\'s mood',
+    '10 min outdoors or sunlight',
+    'Read for 5 minutes',
+    'Connected with someone today'
+  ];
+  var savedCL = LyfProfile.getDailyLog('lyf_cl');
+  var clEl = document.getElementById('checklist');
+  checks.forEach(function(text, i){
+    var item = document.createElement('div');
+    item.className = 'cl-item' + (savedCL[i] ? ' done' : '');
+    item.innerHTML = '<div class="cl-check">' + (savedCL[i] ? '✓' : '') + '</div>'
+                   + '<div class="cl-text">' + text + '</div>';
+    item.onclick = function(){
+      item.classList.toggle('done');
+      var done = item.classList.contains('done');
+      item.querySelector('.cl-check').textContent = done ? '✓' : '';
+      savedCL[i] = done;
+      LyfProfile.saveDailyLog('lyf_cl', savedCL);
+      LyfCatalyst.saveDailyLog({ checklist: JSON.stringify(savedCL) });
+      LyfVitality.persist();
+      if(window.Apptics) Apptics.track('checklist_item_' + i, 'engagement', { done: done });
+      /* Refresh vitality badge */
+      var score = LyfVitality.compute();
+      document.getElementById('vitalityBadge').textContent = score;
+      document.getElementById('sbScore').textContent = score;
+    };
+    clEl.appendChild(item);
+  });
+
+  /* Water tracker */
+  var wFilled = LyfProfile.getWater();
+  function renderWater(){
+    var wg = document.getElementById('waterGlasses');
+    wg.innerHTML = '';
+    for(var i=0; i<12; i++){
+      (function(idx){
+        var g = document.createElement('div');
+        g.className = 'wg' + (idx < wFilled ? ' filled' : '');
+        g.textContent = '💧';
+        g.onclick = function(){
+          wFilled = idx < wFilled ? idx : idx + 1;
+          LyfProfile.saveWater(wFilled);
+          LyfVitality.persist();
+          document.getElementById('waterCount').textContent = wFilled + ' / 12';
+          document.getElementById('waterBar').style.width = Math.round(wFilled/12*100) + '%';
+          if(window.Apptics) Apptics.track('water_logged','fitness',{ glasses: wFilled });
+          renderWater();
+        };
+        wg.appendChild(g);
+      })(i);
+    }
+    document.getElementById('waterCount').textContent = wFilled + ' / 12';
+    document.getElementById('waterBar').style.width = Math.round(wFilled/12*100) + '%';
+  }
+  renderWater();
+
+  /* Section cards */
+  var sections = [
+    { href:'fitness.html',   ey:'Fitness & Body',    c:'var(--fitness)', bg:'var(--fitness-lt)', title:'How do you want to feel?',  pull:'Workouts · Nutrition · Goals',     tags:['Workout','Meals'] },
+    { href:'mind.html',      ey:'Mind & Wellness',   c:'var(--mind)',    bg:'var(--mind-lt)',    title:'What\'s in your head?',     pull:'Mood · Breathing · Books · Sleep', tags:['Mood','Books'] },
+    { href:'happiness.html', ey:'Happiness & Joy',   c:'var(--joy)',     bg:'var(--joy-lt)',     title:'When did you feel alive?',  pull:'Gratitude · Joy log · Detox',      tags:['Joy log'] },
+    { href:'nature.html',    ey:'Nature & Escape',   c:'var(--nature)',  bg:'var(--nature-lt)',  title:'Built for the outdoors',    pull:'Sun walks · Spots · Escapes',      tags:['Near me'] },
+    { href:'connect.html',   ey:'Connection',        c:'var(--connect)', bg:'var(--connect-lt)', title:'Who fills your energy?',    pull:'Social health · Community',        tags:['Nudge'] },
+    { href:'settings.html',  ey:'Settings',          c:'var(--sky)',     bg:'var(--sky-lt)',     title:'Customise your Lyf',        pull:'Goals · AI provider · Analytics',  tags:['Profile'] }
+  ];
+  var sc = document.getElementById('sectionCards');
+  sections.forEach(function(s){
+    var card = document.createElement('a');
+    card.href = s.href;
+    card.className = 'sec-card';
+    card.style.borderTop = '3px solid ' + s.c;
+    card.innerHTML = '<div class="sec-card-ey" style="color:' + s.c + '">' + s.ey + '</div>'
+      + '<div class="sec-card-title">' + s.title + '</div>'
+      + '<div class="sec-card-pull">' + s.pull + '</div>'
+      + '<div class="sec-card-tags">' + s.tags.map(function(t){
+          return '<span class="sec-tag" style="background:' + s.bg + ';color:' + s.c + '">' + t + '</span>';
+        }).join('') + '</div>';
+    sc.appendChild(card);
+  });
+
+  /* Pillar bar click */
+  window.highlightPillar = function(el){
+    document.querySelectorAll('.sb-bar-row').forEach(function(r){ r.classList.remove('active'); });
+    el.classList.add('active');
+  };
+
+  /* Save vitality on load */
+  LyfCatalyst.saveVitality();
+});
+</script>
+</body>
+</html>
